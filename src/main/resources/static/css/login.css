@@ -1,0 +1,34 @@
+#wrap {
+    width:1200px;
+    margin: 0 auto;
+}
+
+header > .logo {
+    width:200px;
+    height:100px;
+   
+}
+
+header > .main-menu {
+    width:1000px;
+    height:100px;
+    background-color: lightgreen;
+}
+
+.contents {
+    height:500px;
+    
+}
+
+
+
+
+
+footer {
+    height:70px;
+    background-color:aquamarine;
+}
+
+.flex-row {
+    display:flex;
+}
