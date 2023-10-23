@@ -52,7 +52,7 @@
             <footer class="d-flex align-items-center">대표전화 : 02-000-1121 / 
 					제호 : 펭귄 영화 / 등록번호 : 서울,바00098 / 등록일자 : 2023년 10월 20일 /
 					E-mail : penguin@naver.com
-					</footer>
+			</footer>
 		
 		</div>
 	
