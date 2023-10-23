@@ -67,10 +67,17 @@
 	
 	<script>
 		$(document).ready(function() {
-			$("#loginBtn").on("click", function() {
+			 
+			
+			// $("#loginBtn").on("click", function () {
+			$("#loginForm").on("submit", function (e) {
+				
+				//form 태그가 가진 페이지 이동 기능을 막자
+				e.preventDefault();
 				
 				let loginId = $("#loginInput").val();
 				let password = $("#passwordInput").val();
+				
 				
 				if(loginId == "") {
 					alert("아이디를 입력하세요!");
@@ -78,16 +85,43 @@
 				}
 				
 				if(password == "") {
-					alert("비밀번호를 입력하세요!");
+					alert("비밀번호를 입력하세요");
 					return ;
 				}
+				
+				$.ajax({
+					type:"post"
+					, url:"/user/login"
+					, data:{"loginId":loginId, "password":password}
+					, success:function(data) {
+
+						if(data.result == "success") {
+							location.href = "/post/main-view";
+							
+						} else {
+							
+							alert("아이디, 비밀번호가 일치하지 않습니다!");
+						}
+						
+					}
+					, error:function() {
+						alert("로그인 에러!");
+					}
+					
+					
+					
+				});
+				
+				
+				
 				
 				
 			});
 			
-			
-			
 		});
+		
+	
+
 	
 	
 	</script>

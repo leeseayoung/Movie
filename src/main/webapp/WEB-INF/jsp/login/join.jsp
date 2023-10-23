@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="/static/css/join.css"  type="text/css">
 </head>
@@ -64,6 +64,61 @@
 	
 	<script>
 		$(document).ready(function() {
+			
+			//중복확인 체크 여부
+			var isCheckDuplicate = false;
+			var isDuplicate = true;
+			
+			$("#loginInput").on("input", function() {
+				 isCheckDuplicate = false;
+				 isDuplicate = true;
+				 
+					$("#avalicableText").addClass("d-none");
+					$("#dupliateText").addClass("d-none");
+			});
+			
+			
+			$("#isDuplicateBtn").on("click", function() {
+				let id = $("#loginInput").val();
+				
+				if(id == "") {
+					alert("아이디를 입력하세요");
+					return ;
+				}
+				
+				
+				$.ajax({
+					type:"get"
+					, url:"/user/duplicate-id"
+					, data:{"loginId":id}
+					, success:function(data) {
+						
+						isCheckDuplicate = true;
+						
+						
+						if(data.isDuplicate) {
+							// 중복
+							$("#dupliateText").removeClass("d-none");
+							$("#avalicableText").addClass("d-none");
+							
+							isDuplicate = true;
+						} else {
+							//중복되지 않았다
+							$("#avalicableText").removeClass("d-none");
+							$("#dupliateText").addClass("d-none");
+							
+							isDuplicate = false;
+						}
+						
+					}
+					, error:function() {
+						alert("중복확인 에러!!");
+					}
+					
+				});
+
+			});
+			
 			$("#joinBtn").on("click", function() {
 				
 				let loginId = $("#loginInput").val();
@@ -77,6 +132,19 @@
 					alert("아이디를 입력하세요!");
 					return;
 				}
+				
+				// 중복체크가 안된경우
+				if(!isCheckDuplicate) {
+					alert("아이디 중복체크를 해주세요");
+					return ;
+				}
+				
+				//중복된 id인 경우
+				if(isDuplicate) {
+					alert("중복된 아이디 입니다!");
+					return ;
+				}
+				
 				
 				if(password == "") {
 					alert("비밀번호를 입력하세요!");
