@@ -40,7 +40,7 @@ public class UserService {
 		
 		int count = userRepository.countByLoginId(loginId);
 		
-		if(count ==1) {
+		if(count == 0) {
 			return false;
 		} else {
 			return true;
