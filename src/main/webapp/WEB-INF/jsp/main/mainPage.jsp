@@ -47,82 +47,93 @@
 	                    	
 	                        <img alt="상영중" class="h-50 w-100"  src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg">
 	                        <div class="font-weight-bold">
-	                            [상영중] 잇츠원 유태양 - ♬왕과비
+	                            [상영중] 스파이더맨 (Spider-Man: No Way Home)
 	                        </div>
 	                        <div class="small text-secondary">
-	                            N-net Ent
+	                           snoy
 	                        </div>
 	                        <div class="small text-secondary">
-	                            조회수 : 80만회 1개월전
+	                            관객수 : 755만명
 	                        </div>
 	
 	                    </div>
 	                   
+                		
 	                    <div class="video">
+	                    	
 	                        <img alt="상영중" class="h-50 w-100"  src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg">
 	                        <div class="font-weight-bold">
-	                            [상영중] 아이즈원 권은비 - ♬Panorama
+	                            [상영중] 스파이더맨 (Spider-Man: No Way Home)
 	                        </div>
 	                        <div class="small text-secondary">
-	                            N-net Ent
+	                           snoy
 	                        </div>
 	                        <div class="small text-secondary">
-	                            조회수 : 80만회 1개월전
+	                            관객수 : 755만명
 	                        </div>
 	
 	                    </div>
+	                                  		
 	                    <div class="video">
-	                        <img alt="상영중" class="h-50 w-100" src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg">
+	                    	
+	                        <img alt="상영중" class="h-50 w-100"  src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg">
 	                        <div class="font-weight-bold">
-	                            [상영중] 스트레이 키즈 리노 - ♬미친놈
+	                            [상영중] 스파이더맨 (Spider-Man: No Way Home)
 	                        </div>
 	                        <div class="small text-secondary">
-	                            N-net Ent
+	                           snoy
 	                        </div>
 	                        <div class="small text-secondary">
-	                            조회수 : 80만회 1개월전
+	                            관객수 : 755만명
 	                        </div>
 	
 	                    </div>
+	                                    		
 	                    <div class="video">
-	                        <img alt="썸네일" class="h-50 w-100"  src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg">
+	                    	
+	                        <img alt="상영중" class="h-50 w-100"  src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg">
 	                        <div class="font-weight-bold">
-	                            [상영중] 아이즈원 장원영 - ♬Panorama
+	                            [상영중] 스파이더맨 (Spider-Man: No Way Home)
 	                        </div>
 	                        <div class="small text-secondary">
-	                            N-net Ent
+	                           snoy
 	                        </div>
 	                        <div class="small text-secondary">
-	                            조회수 : 80만회 1개월전
+	                            관객수 : 755만명
 	                        </div>
 	
 	                    </div>
+	                                    		
 	                    <div class="video">
-	                        <img alt="썸네일" class="h-50 w-100"  src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg">
+	                    	
+	                        <img alt="상영중" class="h-50 w-100"  src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg">
 	                        <div class="font-weight-bold">
-	                            [상영중] NCT DREAM 제노 - ♬ 맛 (Hot Sauce)
+	                            [상영중] 스파이더맨 (Spider-Man: No Way Home)
 	                        </div>
 	                        <div class="small text-secondary">
-	                            N-net Ent
+	                           snoy
 	                        </div>
 	                        <div class="small text-secondary">
-	                            조회수 : 80만회 1개월전
+	                            관객수 : 755만명
 	                        </div>
 	
 	                    </div>
+	                                    		
 	                    <div class="video">
-	                        <img alt="썸네일" class="h-50 w-100" src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg">
+	                    	
+	                        <img alt="상영중" class="h-50 w-100"  src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg">
 	                        <div class="font-weight-bold">
-	                            [상영중] 아이즈원 미야와키 사쿠라 - ♬Panorama
+	                            [상영중] 스파이더맨 (Spider-Man: No Way Home)
 	                        </div>
 	                        <div class="small text-secondary">
-	                            N-net Ent
+	                           snoy
 	                        </div>
 	                        <div class="small text-secondary">
-	                            조회수 : 80만회 1개월전
+	                            관객수 : 755만명
 	                        </div>
 	
 	                    </div>
+	                    
 
                 </article>
            
