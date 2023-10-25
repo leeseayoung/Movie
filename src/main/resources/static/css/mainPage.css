@@ -1,0 +1,33 @@
+#wrap {
+    width:1200px;
+    margin: 0 auto;
+}
+
+header > .logo {
+    height:100px;
+}
+
+header > .search {
+    height:100px;
+}
+
+header > .user {
+    height:100px;
+}
+
+.menu-item:hover {
+    background-color:#eeeeee;
+}
+
+.contents > .main-contents {
+    background-color: #eeeeee;
+}
+
+.main-contents > .video {
+    margin-top:30px;
+    width:300px;
+}
+
+footer {
+    height:100px;
+}

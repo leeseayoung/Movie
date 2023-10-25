@@ -96,7 +96,7 @@
 					, success:function(data) {
 
 						if(data.result == "success") {
-							location.href = "/post/main-view";
+							location.href = "/movie/main-view";
 							
 						} else {
 							
