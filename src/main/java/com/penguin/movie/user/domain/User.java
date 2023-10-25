@@ -35,6 +35,9 @@ public class User {
 	private String name;
 	private String email;
 	
+	@Column(name="managerCode")
+	private String managerCode;
+	
 	
 	@UpdateTimestamp	
 	@Column(name="createdAt", updatable=false)

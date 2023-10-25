@@ -16,6 +16,12 @@ public class UserService {
 	private UserRepository userRepository;
 	
 	
+	
+
+	
+	
+	
+	
 	//로그인 기능
 	public User getUser(String loginId, String password) {
 		//암호화
@@ -57,7 +63,8 @@ public class UserService {
 			String loginId
 			, String password
 			, String name
-			, String email) {
+			, String email
+			, String managerCode) {
 		
 		//비밀번호 암호화
 	    String encryptPassword = EncrypUtils.md5(password);
@@ -69,6 +76,7 @@ public class UserService {
 					.password(encryptPassword)
 					.name(name)
 					.email(email)
+					.managerCode(managerCode)
 					.build();
 
 

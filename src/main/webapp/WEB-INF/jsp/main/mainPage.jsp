@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>     
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,7 @@
         <div id="wrap">
             <header class="d-flex">
                 <div class="logo col-3 d-flex align-items-center">
-                    <h1 class="text-danger">펭귄 리뷰</h1>
+                    <h1 class="text-primary">펭귄 리뷰</h1>
                 </div>
                 <div class="search col-7 d-flex justify-content-center align-items-center">
                     <div class="input-group mb-2 col-10 p-0">
@@ -24,22 +25,25 @@
                     </div>
                 </div>
                 <div class="user col-2 d-flex justify-content-end align-items-center" >
-                    <div>이세영 님</b><u>로그아웃</u></div>
+                   <c:if test="${not empty userId}">
+					<div class="mr-3">${userName}님 <a href="/user/logout">로그아웃</a></div>
+					</c:if>
                 </div>
             </header>
+            <h1 class="text-center">현재 상영중</h1>
             <section class="contents d-flex">
                 <nav class="main-menu col-2 p-0">
                     <ul class="nav flex-column">
-                        <li class="nav-item menu-item"><a href="#" class="nav-link text-dark font-weight-bold">현재 상영중</a></li>
-                        <li class="nav-item menu-item"><a href="#" class="nav-link text-dark font-weight-bold">별점 높은 영화</a></li>
-                        <li class="nav-item menu-item"><a href="#" class="nav-link text-dark font-weight-bold">내가쓴 감상평</a></li>
+                        <li class="nav-item menu-item"><a href="http://localhost:8080/movie/main-view" class="nav-link text-dark font-weight-bold">현재 상영중</a></li>
+                        <li class="nav-item menu-item"><a href="https://www.naver.com/" class="nav-link text-dark font-weight-bold">영화 리스트 리뷰</a></li>
+                        <li class="nav-item menu-item"><a href="#" class="nav-link text-dark font-weight-bold">내가 쓴 감상평</a></li>
 
                     </ul>
                 </nav>
 
                 
-                
                 <article class="main-contents col-10 d-flex flex-wrap justify-content-between py-4">
+                
                 	
                 	
                 		
@@ -47,13 +51,17 @@
 	                    	
 	                        <img alt="상영중" class="h-50 w-100"  src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg">
 	                        <div class="font-weight-bold">
-	                            [상영중] 스파이더맨 (Spider-Man: No Way Home)
+	                            <a href="#">[상영중] 스파이더맨 <br>
+	                            (Spider-Man: No Way Home)</a>
 	                        </div>
 	                        <div class="small text-secondary">
-	                           snoy
+	                           장르 : 액션
 	                        </div>
 	                        <div class="small text-secondary">
 	                            관객수 : 755만명
+	                        </div>
+	                        <div class="small text-secondary">
+	                            예매율 : 6.5%
 	                        </div>
 	
 	                    </div>
@@ -133,17 +141,21 @@
 	                        </div>
 	
 	                    </div>
-	                    
 
                 </article>
            
             </section>
-            
-            
+            <c:if test="${not empty managerCode}">
+		    	<a href="#" class="btn btn-primary">영화 추가</a>
+			</c:if>
+			
+	        
+
+	 
             
             <footer>
                 <div class="text-center text-secondary mt-3">
-                    Copyright (C) 2023 ITube all rights reserved.
+                   2023 펭귄 리뷰 
                 </div>
             </footer>
         </div>

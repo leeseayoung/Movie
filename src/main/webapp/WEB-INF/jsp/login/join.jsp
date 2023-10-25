@@ -35,7 +35,7 @@
 							<input type="text" placeholder="이름" class="form-control mt-4" id="nameInput">
 							<input type="text" placeholder="이메일" class="form-control mt-4" id="emailInput">
 							
-							<!--<input type="text" placeholder="관리자 코드" class="form-control mt-4" id="managerCode">-->
+							<input type="text" placeholder="관리자 코드" class="form-control mt-4" id="managerCodeInput">
 							
 							<button type="button" class="btn btn-secondary btn-block mt-4" id="joinBtn">가입</button>
 						</div>
@@ -126,7 +126,7 @@
 				let passwordCheck = $("#passwordConfirmInput").val();
 				let name = $("#nameInput").val();
 				let email = $("#emailInput").val();
-				
+				let managerCode = $("#managerCodeInput").val();
 				
 				if(loginId == "") {
 					alert("아이디를 입력하세요!");
@@ -173,7 +173,7 @@
 				$.ajax({
 					type:"post"
 					, url:"/user/join"
-					, data:{"loginId":loginId, "password":password, "name":name, "email":email}
+					, data:{"loginId":loginId, "password":password, "name":name, "email":email, "managerCode":managerCode}
 					, success:function(data) {
 						
 						if(data.result == "success") {

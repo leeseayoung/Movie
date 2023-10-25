@@ -19,7 +19,7 @@
             </header>
             
             
-            <div class="contents bg-warning">
+            <div class="contents bg-light">
 	           	 <section class="d-flex contents">
 	                <section class="left-section col-6 h-auto d-flex justify-content-center align-items-center">
 	                     <img height="50%" src="https://cdn.pixabay.com/photo/2013/07/13/10/08/penguin-156616_1280.png">

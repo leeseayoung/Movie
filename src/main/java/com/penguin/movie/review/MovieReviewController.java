@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MovieReviewController {
 
-	
+	//세팅 model , session 
    
 	@GetMapping("/main-view")
 	public String movieReview() {
@@ -16,4 +16,7 @@ public class MovieReviewController {
 		
 		return "main/mainPage";
 	}
+	
+	
+	
 }

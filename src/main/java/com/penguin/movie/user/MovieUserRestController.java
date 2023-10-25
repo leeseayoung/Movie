@@ -29,10 +29,11 @@ public class MovieUserRestController {
 			@RequestParam("loginId") String loginId
 			, @RequestParam("password") String password
 			, @RequestParam("name") String name
-			, @RequestParam("email") String email) {
+			, @RequestParam("email") String email
+			, @RequestParam("managerCode") String managerCode) {
 		
 		
-		User user = userService.addUser(loginId, password, name, email);
+		User user = userService.addUser(loginId, password, name, email, managerCode);
 		
 		
 		// 회원 가입 성공시 success, 실패시 fail
@@ -87,6 +88,7 @@ public class MovieUserRestController {
 			// 세션에 사용자 정보가 저장된 경우 로그인된 상태로 파악
 			session.setAttribute("userId", user.getId());
 			session.setAttribute("userName",user.getName());
+			session.setAttribute("managerCode", user.getManagerCode());
 			//session.setAttribute("userlogin",user.getLoginId());
 			
 			resultMap.put("result", "success");
