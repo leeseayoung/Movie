@@ -2,14 +2,16 @@ package com.penguin.movie.review;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RequestMapping("/movie")
 @Controller
 public class MovieReviewController {
 
-	//세팅 model , session 
    
+	//세팅 model , session 
 	@GetMapping("/main-view")
 	public String movieReview() {
 		
@@ -25,5 +27,6 @@ public class MovieReviewController {
 		return "manager/addMovie";
 	}
 	
+
 	
 }
