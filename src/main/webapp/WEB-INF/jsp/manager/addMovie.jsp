@@ -106,7 +106,7 @@
         	let polt = $("#plotInput").val();
         	let file = $("#fileInput")[0];
         	
-        	alert("영화 상영중 : " + checkBox);  // alert으로 체크박스 상태 출력
+        	//alert("영화 상영중 : " + checkBox);  // alert으로 체크박스 상태 출력
         		
         		if(title == "") {
         			alert("제목을 입력하세요!");
@@ -138,6 +138,30 @@
         			alert("영화 이미지를 선택해주세요!");
         			return;
         		}
+        		
+        		
+        		$.ajax({
+        			type:"post"
+        			, url:"/movie/create"
+    				, data:formData
+    				, enctype:"multipart/form-data"  // 파일 업로드 필수 옵션
+    				, processData:false  // 파일 업로드 필수 옵션
+    				, contentType:false   // 파일 업로드 필수 옵션
+    				, success:function(data){
+    					if(data.result == "success") {
+    						location.reload();
+    					} else{
+    						alert("영화 추가 실패!");
+    					}
+    				}
+					, error:function() {
+						alert("영화 추가 에러!");
+					}	
+						
+
+        		});
+        		
+        		
         	
         	});
         	
