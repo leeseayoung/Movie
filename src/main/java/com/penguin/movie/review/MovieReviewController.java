@@ -18,5 +18,12 @@ public class MovieReviewController {
 	}
 	
 	
+	@GetMapping("/create-view")
+	public String addMovie() {
+		
+		//"manager/addMovie";
+		return "manager/addMovie";
+	}
+	
 	
 }

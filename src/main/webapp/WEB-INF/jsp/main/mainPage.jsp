@@ -146,7 +146,7 @@
            
             </section>
             <c:if test="${not empty managerCode}">
-		    	<a href="#" class="btn btn-primary">영화 추가</a>
+		    	<a href="http://localhost:8080/movie/create-view" class="btn btn-primary">영화 추가</a>
 			</c:if>
 			
 	        
