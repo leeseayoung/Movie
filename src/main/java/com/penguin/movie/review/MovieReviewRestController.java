@@ -28,14 +28,13 @@ public class MovieReviewRestController {
 			 , @RequestParam("genre") String genre
 			 , @RequestParam("runTime") String runTime
 			 , @RequestParam("releaseDate") String releaseDate
-			 , @RequestParam("polt") String polt
+			 , @RequestParam("plot") String plot
 			 , @RequestParam("imageFile") MultipartFile file
-			 , @RequestParam("checkBox") Boolean checkBox		 
-			, HttpSession session) {
+			 , @RequestParam("checkBox") Boolean checkBox) {
 		
 		
 		
-		int count = movieService.addMovie(title, genre, runTime, releaseDate, polt, file, checkBox);
+		int count = movieService.addMovie(title, genre, runTime, releaseDate, plot, file, checkBox);
 		
 		Map<String, String> resultMap = new HashMap<>();
 		

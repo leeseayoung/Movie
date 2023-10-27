@@ -17,7 +17,6 @@ public class Movie {
 	private Date updatedAt;
 	
 	
-	
 	public int getId() {
 		return id;
 	}
@@ -78,6 +77,10 @@ public class Movie {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	
+	
+	
+	
 	
 	
 	

@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="user col-2 d-flex justify-content-end align-items-center" >
-                   <c:if test = "${not empty userId}">
+                   	<c:if test = "${not empty userId}">
 					<div class="mr-3">${userName}님 <a href="/user/logout">로그아웃</a></div>
 					</c:if>
                 </div>
@@ -85,10 +85,13 @@
             </footer>
         </div>
         
-       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
+      	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+ 
+       	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        
+        
         
         <script>
         $(document).ready(function() {
@@ -101,12 +104,12 @@
         	let runTime = $("#runTimeInput").val();
         	let genre = $("#genreInput").val();
         	let releaseDate = $("#releaseDateInput").val();
-        	let checkBox = $("#checkBoxInput").is(":checked") ? "on" : "off";  // 체크박스 상태에 따라 "on" 또는 "off" 설정	
+        	let checkBox = $("#checkBoxInput").is(":checked");   //체크박스 상태에 따라 "상영" 또는 "미상영" 설정	
         	
-        	let polt = $("#plotInput").val();
+        	let plot = $("#plotInput").val();
         	let file = $("#fileInput")[0];
         	
-        	//alert("영화 상영중 : " + checkBox);  // alert으로 체크박스 상태 출력
+        	alert("영화 상영중 : " + checkBox);  // alert으로 체크박스 상태 출력
         		
         		if(title == "") {
         			alert("제목을 입력하세요!");
@@ -129,7 +132,7 @@
         		}
         		
         		
-        		if(polt == "") {
+        		if(plot == "") {
         			alert("줄거리를 입력해주세요!");
         			return;
         		}
@@ -139,8 +142,17 @@
         			return;
         		}
         		
+				let formData = new FormData();
+				formData.append("title", title);
+				formData.append("genre", genre);
+				formData.append("runTime", runTime);
+				formData.append("releaseDate", releaseDate);
+				formData.append("plot", plot);
+				formData.append("checkBox", checkBox);
+				formData.append("imageFile", file.files[0]);
         		
-        		$.ajax({
+        		
+				$.ajax({
         			type:"post"
         			, url:"/movie/create"
     				, data:formData
@@ -149,7 +161,7 @@
     				, contentType:false   // 파일 업로드 필수 옵션
     				, success:function(data){
     					if(data.result == "success") {
-    						location.reload();
+    						location.href = "/movie/main-view";
     					} else{
     						alert("영화 추가 실패!");
     					}

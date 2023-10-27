@@ -1,4 +1,4 @@
-package com.penguin.movie.ex.hello;
+package com.penguin.movie.ex;
 
 
 
