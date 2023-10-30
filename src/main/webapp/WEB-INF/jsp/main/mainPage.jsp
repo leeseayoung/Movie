@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>영화 리뷰</title>
+<style>*{margin:0; padding:0;}</style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="/static/css/mainPage.css"  type="text/css">
 </head>
@@ -42,106 +43,36 @@
                 </nav>
 
                 
-                <article class="main-contents col-10 d-flex flex-wrap justify-content-between py-4">
+                <article class="main-contents col-10 justify-content-around py-4">
                 
                 	
                 	
                 		
-	                    <div class="video">
-	                    	
-	                        <img alt="상영중" class="h-50 w-100"  src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg">
-	                        <div class="font-weight-bold">
-	                            <a href="#">[상영중] 스파이더맨 <br>
-	                            (Spider-Man: No Way Home)</a>
-	                        </div>
-	                        <div class="small text-secondary">
-	                           장르 : 액션
-	                        </div>
-	                        <div class="small text-secondary">
-	                            관객수 : 755만명
-	                        </div>
-	                        <div class="small text-secondary">
-	                            예매율 : 6.5%
-	                        </div>
-	
+	                    <div class="d-flex justify-content-around">
+		                    	
+		                    <c:forEach var="movie" items="${movieList}">
+		                    	<section>
+			                        <img alt="영화 이미지" class="h-5 w-25"  src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg">
+			                        <div class="font-weight-bold">
+			                            <a href="#">${movie.title}</a>
+			                        </div>
+			                        <div class="small text-secondary">
+			                           ${movie.genre}
+			                        </div>
+			                        <div class="small text-secondary">
+			                            관객수 : 755만명
+			                        </div>
+			                        <div class="small text-secondary">
+			                            예매율 : 6.5%
+			                        </div>
+								</section>
+		                     </c:forEach>
 	                    </div>
 	                   
-                		
-	                    <div class="video">
-	                    	
-	                        <img alt="상영중" class="h-50 w-100"  src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg">
-	                        <div class="font-weight-bold">
-	                            [상영중] 스파이더맨 (Spider-Man: No Way Home)
-	                        </div>
-	                        <div class="small text-secondary">
-	                           snoy
-	                        </div>
-	                        <div class="small text-secondary">
-	                            관객수 : 755만명
-	                        </div>
-	
-	                    </div>
-	                                  		
-	                    <div class="video">
-	                    	
-	                        <img alt="상영중" class="h-50 w-100"  src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg">
-	                        <div class="font-weight-bold">
-	                            [상영중] 스파이더맨 (Spider-Man: No Way Home)
-	                        </div>
-	                        <div class="small text-secondary">
-	                           snoy
-	                        </div>
-	                        <div class="small text-secondary">
-	                            관객수 : 755만명
-	                        </div>
-	
-	                    </div>
-	                                    		
-	                    <div class="video">
-	                    	
-	                        <img alt="상영중" class="h-50 w-100"  src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg">
-	                        <div class="font-weight-bold">
-	                            [상영중] 스파이더맨 (Spider-Man: No Way Home)
-	                        </div>
-	                        <div class="small text-secondary">
-	                           snoy
-	                        </div>
-	                        <div class="small text-secondary">
-	                            관객수 : 755만명
-	                        </div>
-	
-	                    </div>
-	                                    		
-	                    <div class="video">
-	                    	
-	                        <img alt="상영중" class="h-50 w-100"  src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg">
-	                        <div class="font-weight-bold">
-	                            [상영중] 스파이더맨 (Spider-Man: No Way Home)
-	                        </div>
-	                        <div class="small text-secondary">
-	                           snoy
-	                        </div>
-	                        <div class="small text-secondary">
-	                            관객수 : 755만명
-	                        </div>
-	
-	                    </div>
-	                                    		
-	                    <div class="video">
-	                    	
-	                        <img alt="상영중" class="h-50 w-100"  src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg">
-	                        <div class="font-weight-bold">
-	                            [상영중] 스파이더맨 (Spider-Man: No Way Home)
-	                        </div>
-	                        <div class="small text-secondary">
-	                           snoy
-	                        </div>
-	                        <div class="small text-secondary">
-	                            관객수 : 755만명
-	                        </div>
-	
-	                    </div>
+	               
 
+                		
+	                  
                 </article>
            
             </section>
@@ -165,7 +96,7 @@
        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
-
+	
 
 </body>
 </html>

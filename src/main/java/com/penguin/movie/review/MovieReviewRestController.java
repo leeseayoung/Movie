@@ -21,7 +21,7 @@ public class MovieReviewRestController {
 	@Autowired
 	private MovieService movieService;
 	
-	
+	//영화 추가 기능 
 	@PostMapping("/create")
 	public Map<String, String> createPost(
 			 @RequestParam("title") String title

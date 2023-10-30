@@ -1,10 +1,15 @@
 package com.penguin.movie.review.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.penguin.movie.common.FileManager;
+import com.penguin.movie.review.domain.Movie;
+import com.penguin.movie.review.dto.MovieDetail;
 import com.penguin.movie.review.repository.MovieRepository;
 
 @Service
@@ -24,6 +29,28 @@ public class MovieService {
 	}
 	
 	
+	
+	//영화(장르,제목)가져오기 기능
+	public List<MovieDetail> getMovieList() {
+		
+		List<Movie> movieList = movieRepository.selectMovieList();
+		
+		List<MovieDetail> movieDetailList = new ArrayList<>();
+		for(Movie movie:movieList) {
+			
+		//장르랑 제목만 일단	
+		MovieDetail movieDetail = MovieDetail.builder()
+								   .id(movie.getId())
+								   .title(movie.getTitle())
+								   .genre(movie.getGenre())
+								   .build();
+			
+			
+		movieDetailList.add(movieDetail);	
+		}
+		
+		return movieDetailList;
+	}
 	
 	
 	

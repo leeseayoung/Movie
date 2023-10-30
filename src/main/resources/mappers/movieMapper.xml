@@ -32,4 +32,26 @@
 
   	</insert>
   
+  	<select id="selectMovieList"
+  	resultType="com.penguin.movie.review.domain.Movie">
+ 			 SELECT
+ 			 	`id`
+ 			 	, `title`
+  				, `genre`
+  				, `runTime`
+  				, `releaseDate`
+  				, `plot`
+  				, `imagePath`
+  				, `checkBox`	
+			FROM	 
+  				`movie`
+  			ORDER BY	
+  				`id` DESC
+  	
+  	</select>
+  
+  
+  
+  
+  
   </mapper>

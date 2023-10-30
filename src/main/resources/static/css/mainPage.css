@@ -31,3 +31,15 @@ header > .user {
 footer {
     height:100px;
 }
+
+.main-contents > .video{
+  text-align:center;
+}
+.main-contents > .video > section>img{
+  width:200px;
+  margin:25px;
+}
+
+
+
+
