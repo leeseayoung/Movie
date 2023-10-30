@@ -66,7 +66,7 @@
 			                            예매율 : 6.5%
 			                        </div>
 								</section>
-		                     </c:forEach>
+		                    </c:forEach>
 	                    </div>
 	                   
 	               
