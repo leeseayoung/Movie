@@ -14,6 +14,6 @@ public class MovieDetail {
 	private String releaseDate;
 	private String plot;
 	private String imagePath;
-	private boolean checkBox;
+	private boolean screenBox;
 	
 }

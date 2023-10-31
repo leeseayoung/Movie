@@ -36,7 +36,7 @@
                 <nav class="main-menu col-2 p-0">
                     <ul class="nav flex-column">
                         <li class="nav-item menu-item"><a href="http://localhost:8080/movie/main-view" class="nav-link text-dark font-weight-bold">현재 상영중</a></li>
-                        <li class="nav-item menu-item"><a href="https://www.naver.com/" class="nav-link text-dark font-weight-bold">영화 리스트 리뷰</a></li>
+                        <li class="nav-item menu-item"><a href="https://www.naver.com/" class="nav-link text-dark font-weight-bold">미상영 영화</a></li>
                         <li class="nav-item menu-item"><a href="#" class="nav-link text-dark font-weight-bold">내가 쓴 감상평</a></li>
 
                     </ul>
@@ -48,55 +48,43 @@
                 	
                 	
                 		
+					            <!-- 영화 칸 -->
+				               
 	               <div class="-flex justify-content-around">
 					    <div class="row">
 					        
 					        <c:forEach var="movie" items="${movieList}">
-					            <!-- 영화 칸 -->
+					       	 <c:if test="${movie.screenBox}">
 					            <div class="col-12 col-sm-6 col-md-4 col-lg-3"> 
 					                <section>
-					                    <img alt="영화 이미지" class="h-5 w-25"  src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg">
-					                    <div class="font-weight-bold">
-					                        <a href="#">${movie.title}</a>
+					                    <img alt="영화 이미지" class="h-50 w-75 pt-3"  src="${movie.imagePath}">
+					                    <div class="font-weight-bold pt-2">
+					                        제목 : <a href="#">${movie.title}</a>
 					                    </div>
 					                    <div class="small text-secondary">
-					                        ${movie.genre}
+					                        장르 : ${movie.genre}
 					                    </div>
 					                    <div class="small text-secondary">
-					                        관객수 : 755만명
+					                        런 타임 : ${movie.runTime}
 					                    </div>
 					                    <div class="small text-secondary">
-					                        예매율 : 6.5%
+					                        개봉일 : ${movie.releaseDate}
 					                    </div>
 					                </section>
 					            </div>
-					    		<!-- 영화 칸 끝 -->
+					            </c:if>
 					        </c:forEach>
 					    </div>
 					</div>
+					    		<!-- 영화 칸 끝 -->
 	                   
 	                        
-	                    <div class="d-flex justify-content-around">
-		                    	
-		                    <c:forEach var="movie" items="${movieList}">
-		                    	<section>
-			                        <img alt="영화 이미지" class="h-5 w-25"  src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg">
-			                        <div class="font-weight-bold">
-			                            <a href="#">${movie.title}</a>
-			                        </div>
-			                        <div class="small text-secondary">
-			                           ${movie.genre}
-			                        </div>
-			                        <div class="small text-secondary">
-			                            관객수 : 755만명
-			                        </div>
-			                        <div class="small text-secondary">
-			                            예매율 : 6.5%
-			                        </div>
-								</section>
-		                    </c:forEach>
-	                    </div>
-
+	                
+				<c:set var="movie" value="${movie.checkBox}" />
+				
+				<c:if test="${movie == true}" >
+					<h1>${movie}</h1>
+				</c:if>
 
 
                 		

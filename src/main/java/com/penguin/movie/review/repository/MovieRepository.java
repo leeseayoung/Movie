@@ -18,11 +18,16 @@ public interface MovieRepository {
 			, @Param("releaseDate")String releaseDate //개봉일
 			, @Param("plot")String plot // 줄거리
 			, @Param("imagePath")String imagePath //이미지
-			, @Param("checkBox")Boolean checkBox); //체크 박스
+			, @Param("screenBox")Boolean screenBox); //상영 박스
 	
 	
 	//영화 정보 조회 
 	public List<Movie> selectMovieList();
+	
+	
+	//영화 세부 정보 조회
+	public Movie selectMovie(@Param("id")int id);
+	
 	
 	
 }

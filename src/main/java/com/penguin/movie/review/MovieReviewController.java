@@ -30,7 +30,7 @@ public class MovieReviewController {
 		List<MovieDetail> movieList = movieService.getMovieList();
 		
 		model.addAttribute("movieList", movieList);
-		
+
 		
 		
 		return "main/mainPage";

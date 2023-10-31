@@ -20,12 +20,12 @@ public class MovieService {
 	
 	
 	//영화 추가  //, MultipartFile file, Boolean checkBox
-	public int addMovie(String title, String genre, String runTime, String releaseDate, String plot , MultipartFile file, Boolean checkBox) {
+	public int addMovie(String title, String genre, String runTime, String releaseDate, String plot , MultipartFile file, Boolean screenBox) {
 		
 		//사진(파일) 저장
 		String imagePath =  FileManager.saveFile(file);
 		
-		return movieRepository.insertMovie(title, genre, runTime, releaseDate, plot, imagePath, checkBox);
+		return movieRepository.insertMovie(title, genre, runTime, releaseDate, plot, imagePath, screenBox);
 	}
 	
 	
@@ -41,8 +41,12 @@ public class MovieService {
 		//장르랑 제목만 일단	
 		MovieDetail movieDetail = MovieDetail.builder()
 								   .id(movie.getId())
+								   .imagePath(movie.getImagePath())
 								   .title(movie.getTitle())
 								   .genre(movie.getGenre())
+								   .runTime(movie.getRunTime())
+								   .releaseDate(movie.getReleaseDate())
+								   .screenBox(movie.isScreenBox())
 								   .build();
 			
 			
@@ -52,7 +56,11 @@ public class MovieService {
 		return movieDetailList;
 	}
 	
-	
+	//영화 정보 가져오기
+	public Movie getMovie(int id) {
+		
+		return movieRepository.selectMovie(id) ;
+	}
 	
 	
 	

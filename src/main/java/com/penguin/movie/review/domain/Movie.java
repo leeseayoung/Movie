@@ -11,7 +11,7 @@ public class Movie {
 	private String releaseDate;
 	private String plot;
 	private String imagePath;
-	private boolean checkBox;
+	private boolean screenBox;
 	
 	private Date createdAt;
 	private Date updatedAt;
@@ -59,11 +59,11 @@ public class Movie {
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
 	}
-	public boolean isCheckBox() {
-		return checkBox;
+	public boolean isScreenBox() {
+		return screenBox;
 	}
-	public void setCheckBox(boolean checkBox) {
-		this.checkBox = checkBox;
+	public void setScreenBox(boolean screenBox) {
+		this.screenBox = screenBox;
 	}
 	public Date getCreatedAt() {
 		return createdAt;
@@ -78,6 +78,8 @@ public class Movie {
 		this.updatedAt = updatedAt;
 	}
 	
+	
+
 	
 	
 	

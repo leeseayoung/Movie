@@ -17,7 +17,7 @@
   				, `releaseDate`
   				, `plot`
   				, `imagePath`
-  				, `checkBox`	
+  				, `screenBox`	
   			)
   			VALUE
   			(
@@ -27,7 +27,7 @@
 	  			, #{releaseDate}
 	  			, #{plot}
 	  			, #{imagePath}
-	  			, #{checkBox}
+	  			, #{screenBox}
   			)
 
   	</insert>
@@ -42,11 +42,29 @@
   				, `releaseDate`
   				, `plot`
   				, `imagePath`
-  				, `checkBox`	
+  				, `screenBox`	
 			FROM	 
   				`movie`
   			ORDER BY	
   				`id` DESC
+  	
+  	</select>
+  
+  	<select id="selectMovie" parameterType="int"
+  	resultType="com.penguin.movie.review.domain.Movie">
+  	 	 	SELECT
+ 			 	`id`
+ 			 	, `title`
+  				, `genre`
+  				, `runTime`
+  				, `releaseDate`
+  				, `plot`
+  				, `imagePath`
+  				, `screenBox`	
+			FROM	 
+  				`movie`
+  			ORDER BY	
+  				`id` = #{id}
   	
   	</select>
   

@@ -30,11 +30,11 @@ public class MovieReviewRestController {
 			 , @RequestParam("releaseDate") String releaseDate
 			 , @RequestParam("plot") String plot
 			 , @RequestParam("imageFile") MultipartFile file
-			 , @RequestParam("checkBox") Boolean checkBox) {
+			 , @RequestParam("screenBox") Boolean screenBox) {
 		
 		
 		
-		int count = movieService.addMovie(title, genre, runTime, releaseDate, plot, file, checkBox);
+		int count = movieService.addMovie(title, genre, runTime, releaseDate, plot, file, screenBox);
 		
 		Map<String, String> resultMap = new HashMap<>();
 		
