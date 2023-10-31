@@ -48,6 +48,34 @@
                 	
                 	
                 		
+	               <div class="-flex justify-content-around">
+					    <div class="row">
+					        
+					        <c:forEach var="movie" items="${movieList}">
+					            <!-- 영화 칸 -->
+					            <div class="col-12 col-sm-6 col-md-4 col-lg-3"> 
+					                <section>
+					                    <img alt="영화 이미지" class="h-5 w-25"  src="https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg">
+					                    <div class="font-weight-bold">
+					                        <a href="#">${movie.title}</a>
+					                    </div>
+					                    <div class="small text-secondary">
+					                        ${movie.genre}
+					                    </div>
+					                    <div class="small text-secondary">
+					                        관객수 : 755만명
+					                    </div>
+					                    <div class="small text-secondary">
+					                        예매율 : 6.5%
+					                    </div>
+					                </section>
+					            </div>
+					    		<!-- 영화 칸 끝 -->
+					        </c:forEach>
+					    </div>
+					</div>
+	                   
+	                        
 	                    <div class="d-flex justify-content-around">
 		                    	
 		                    <c:forEach var="movie" items="${movieList}">
@@ -68,8 +96,8 @@
 								</section>
 		                    </c:forEach>
 	                    </div>
-	                   
-	               
+
+
 
                 		
 	                  
