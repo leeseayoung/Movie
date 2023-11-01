@@ -19,7 +19,9 @@
   				, `imagePath`
   				, `screenBox`	
   			)
+  			
   			VALUE
+  			
   			(
 	  			#{title}
 	  			, #{genre}
@@ -50,24 +52,24 @@
   	
   	</select>
   
-  	<select id="selectMovie" parameterType="int"
-  	resultType="com.penguin.movie.review.domain.Movie">
-  	 	 	SELECT
- 			 	`id`
- 			 	, `title`
-  				, `genre`
-  				, `runTime`
-  				, `releaseDate`
-  				, `plot`
-  				, `imagePath`
-  				, `screenBox`	
-			FROM	 
-  				`movie`
-  			ORDER BY	
-  				`id` = #{id}
-  	
-  	</select>
+
   
+  <select id="selectMovie" parameterType="int" 
+  resultType="com.penguin.movie.review.domain.Movie">
+			    SELECT
+			        `id`
+			        , `title`
+			        , `genre`
+			        , `runTime`
+			        , `releaseDate`
+			        , `plot`
+			        , `imagePath`
+			        , `screenBox`
+			    FROM
+			        `movie`
+			    WHERE
+			        `id` = #{id}
+</select>
   
   
   

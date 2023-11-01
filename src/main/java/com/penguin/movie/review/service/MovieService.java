@@ -56,7 +56,8 @@ public class MovieService {
 		return movieDetailList;
 	}
 	
-	//영화 정보 가져오기
+	
+	//영화 정보 가져오기(id)일치하는 영화 정보
 	public Movie getMovie(int id) {
 		
 		return movieRepository.selectMovie(id) ;

@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.penguin.movie.review.domain.Movie;
 import com.penguin.movie.review.dto.MovieDetail;
 import com.penguin.movie.review.service.MovieService;
 
@@ -19,6 +21,10 @@ public class MovieReviewController {
 
 	@Autowired
 	private MovieService movieService;
+	
+	
+	
+	
 	
 	//세팅 model , session  영화 저장 기능 불러오기
 	@GetMapping("/main-view")
@@ -41,9 +47,7 @@ public class MovieReviewController {
 	
 	
 	
-	
-	
-	
+	//영화 추가
 	@GetMapping("/create-view")
 	public String addMovie() {
 		
@@ -52,6 +56,16 @@ public class MovieReviewController {
 	}
 	
 	
+	//영화 상세페이지
+	@GetMapping("/detail-view")
+	public String movieDetail(@RequestParam("id")int id, Model model) {
+				//영화 정보 이름
+		Movie movieDetail = movieService.getMovie(id);
+		
+		model.addAttribute("movieDetail", movieDetail);
+		
+		return "main/detail";
+	}
 	
 	
 

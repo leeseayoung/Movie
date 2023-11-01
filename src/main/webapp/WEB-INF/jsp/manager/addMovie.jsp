@@ -148,7 +148,7 @@
 				formData.append("runTime", runTime);
 				formData.append("releaseDate", releaseDate);
 				formData.append("plot", plot);
-				formData.append("checkBox", checkBox);
+				formData.append("screenBox", checkBox);
 				formData.append("imageFile", file.files[0]);
         		
         		

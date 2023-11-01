@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>영화 리뷰</title>
-<style>*{margin:0; padding:0;}</style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="/static/css/mainPage.css"  type="text/css">
 </head>
@@ -55,11 +54,12 @@
 					        
 					        <c:forEach var="movie" items="${movieList}">
 					       	 <c:if test="${movie.screenBox}">
+					       
 					            <div class="col-12 col-sm-6 col-md-4 col-lg-3"> 
 					                <section>
 					                    <img alt="영화 이미지" class="h-50 w-75 pt-3"  src="${movie.imagePath}">
 					                    <div class="font-weight-bold pt-2">
-					                        제목 : <a href="#">${movie.title}</a>
+					                        제목 : <a href="/movie/detail-view?id=${movie.id}">${movie.title}</a>
 					                    </div>
 					                    <div class="small text-secondary">
 					                        장르 : ${movie.genre}
