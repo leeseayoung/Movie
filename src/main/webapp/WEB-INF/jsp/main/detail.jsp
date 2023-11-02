@@ -3,69 +3,106 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>영화 상세 정보</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="/static/css/mainPage.css"  type="text/css">
+    <meta charset="UTF-8">
+    <title>영화 상세 정보</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/detailPage.css" type="text/css">
 </head>
 <body>
-		<div id="wrap">
-			<header class="d-flex">
-	                <div class="logo col-3 d-flex align-items-center">
-	                    <h1 class="text-primary">펭귄 리뷰</h1>
-	                </div>
-	                <div class="search col-7 d-flex justify-content-center align-items-center">
-	                    <div class="input-group mb-2 col-10 p-0">
-	                        <input type="text" class="form-control">
-	                        <div class="input-group-append">
-	                            <button class="btn" type="button">검색</button>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="user col-2 d-flex justify-content-end align-items-center" >
-	                   <c:if test="${not empty userId}">
-						<div class="mr-3">${userName}님 <a href="/user/logout">로그아웃</a></div>
-						</c:if>
-	                </div>
-	            </header>
-				 <h1 class="text-center"><a class="text-warning">영화 정보</a></h1>
-           		 
-           		 
-           		 <section class="contents d-flex">
-	                <nav class="main-menu col-2 p-0">
-	                    <ul class="nav flex-column">
-	                        <li class="nav-item menu-item"><a href="http://localhost:8080/movie/main-view" class="nav-link text-dark font-weight-bold">현재 상영중</a></li>
-	                        <li class="nav-item menu-item"><a href="https://www.naver.com/" class="nav-link text-dark font-weight-bold">미상영 영화</a></li>
-	                        <li class="nav-item menu-item"><a href="#" class="nav-link text-dark font-weight-bold">내가 쓴 감상평</a></li>
-	
-	                    </ul>
-	                </nav>
-					            <article class="main-contents col-10 justify-content-around py-4">
+    <div class="container">
+        <header class="header d-flex">
+            <div class="logo col-3 d-flex align-items-center">
+                <h1>펭귄 리뷰</h1>
+            </div>
+            <div class="search col-7 d-flex justify-content-center align-items-center">
+                <div class="input-group col-10 p-0">
+                    <input type="text" class="form-control" placeholder="검색어를 입력하세요">
+                    <div class="input-group-append">
+                        <button class="btn" type="button">검색</button>
+                    </div>
+                </div>
+            </div>
+            <div class="user col-2 d-flex justify-content-end align-items-center">
+                <c:if test="${not empty userId}">
+                    <div class="mr-3">${userName}님<a href="/user/logout">로그아웃</a></div>
+                </c:if>
+            </div>
+        </header>
+        <h1 class="text-center mt-4"><a class="text-warning">영화 정보</a></h1>
+        <section class="contents d-flex">
+            <nav class="main-menu col-2 p-0">
+                <ul class="nav flex-column">
+                    <li class="nav-item menu-item"><a href="http://localhost:8080/movie/main-view" class="nav-link text-dark font-weight-bold">현재 상영중</a></li>
+                    <li class="nav-item menu-item"><a href="https://www.naver.com/" class="nav-link text-dark font-weight-bold">미상영 영화</a></li>
+                    <li class="nav-item menu-item"><a href="#" class="nav-link text-dark font-weight-bold">내가 쓴 감상평</a></li>
+                </ul>
+            </nav>
+            <article class="main-contents col-10 justify-content-around py-4">
                 <div class="d-flex">
                     <div class="mr-3">
-                        <img alt="영화 이미지" class="h-100 w-100" src="${movieDetail.imagePath}">
-                        <label><br>줄거리 : ${movieDetail.plot}</label>
+                        <img alt="영화 이미지" class="movie-image" src="${movieDetail.imagePath}">
                     </div>
                     <div>
-                        <label>제목 : ${movieDetail.title}</label><br>
-                        <label>장르 : ${movieDetail.genre}</label><br>
-                        <label>러닝 타임 : ${movieDetail.runTime}</label><br>
-                        <label>개봉일 : ${movieDetail.releaseDate}</label><br>
-                   
-                        
+                        <p class="movie-info"><strong>제목 : </strong> ${movieDetail.title}</p>
+                        <p class="movie-info"><strong>장르 : </strong> ${movieDetail.genre}</p>
+                        <p class="movie-info"><strong>러닝 타임 : </strong> ${movieDetail.runTime}</p>
+                        <p class="movie-info"><strong>개봉일 : </strong>  ${movieDetail.releaseDate}</p>
                     </div>
                 </div>
-            </article>
-		      </section>
-		    
-		    
-		    <footer>
-                <div class="text-center text-secondary mt-3">
-                   2023 펭귄 리뷰 
+                <div>
+                    <p class="movie-info"><strong>줄거리 : </strong> ${movieDetail.plot}</p>
                 </div>
-            </footer>
-		
-		</div>		
-				
+                <!-- 영화 감상평, 한줄평, 찜 -->
+                <div class="d-flex justify-content-end">
+                    <div class="action-item pr-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
+                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                        </svg>
+                        <label>찜 하기!</label>
+                    </div>
+                    <div class="action-item pr-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                        </svg>
+                        <label>감상평!</label>
+                    </div>
+                    <div class="action-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
+                        </svg>
+                        <label>한줄평!</label>
+                    </div>
+                </div>
+                 <!-- 영화 감상평, 한줄평, 찜  끝-->
+
+                <div>
+                    <h1 class="pt-3">한줄평</h1>
+
+                    <!-- 한줄평 시작!-->
+                    <div class="comment">
+                        <div class="user-nickname">유저 닉네임:</div>
+                        <div class="comment-text">한줄평 : </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="heart pt-2" width="50" height="50" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.920 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.060.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                        </svg>
+                    </div>
+
+                    <div class="comment pt-3">
+                        <div class="user-nickname">유저 닉네임 : </div>
+                        <div class="comment-text">한줄평 : </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="heart pt-2" width="50" height="50" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.920 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.060.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                        </svg>
+                    </div>
+                    <!-- 한줄평 시작 끝!-->
+                </div>
+            </article>
+        </section>
+    </div>
+
+    <footer class="bg-secondary d-flex justify-content-center align-items-center text-white">
+        <h5>2023 펭귄 리뷰</h5>
+    </footer>
 </body>
 </html>

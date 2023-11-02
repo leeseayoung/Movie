@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+#wrap {
+    width:1200px;
+    margin: 0 auto;
+}
+
+header > .logo {
+    height:100px;
+}
+
+header > .search {
+    height:100px;
+}
+
+header > .user {
+    height:100px;
+}
+
+.menu-item:hover {
+    background-color:#eeeeee;
+}
+
+.contents > .main-contents {
+    background-color: #eeeeee;
+}
+
+.main-contents > .video {
+    margin-top:30px;
+    width:300px;
+}
+
+footer {
+    height:100px;
+        width:1110px;
+    margin: 0 auto;
+    
+}
+
+.main-contents > .video{
+  text-align:center;
+}
+.main-contents > .video > section>img{
+  width:200px;
+  margin:25px;
+}
+
+body {
+	background-color: #f8f9fa;
+}
+
+.header {
+	background-color: #343a40;
+	color: #fff;
+	padding: 10px;
+}
+
+.logo h1 {
+	font-family: 'Arial', sans-serif;
+	font-size: 24px;
+}
+
+.search input {
+	border: 1px solid #ced4da;
+}
+
+.search button {
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+}
+
+.user a {
+	color: #007bff;
+}
+
+.menu-item a {
+	text-decoration: none;
+}
+
+.main-menu {
+	background-color: #fff;
+	padding: 10px;
+}
+
+.main-contents {
+	background-color: #fff;
+	padding: 20px;
+}
+
+.movie-image {
+     max-height: 500px;
+     width: auto;
+}
+
+ .movie-info {
+     font-size: 18px;
+     margin-top: 10px;
+}
