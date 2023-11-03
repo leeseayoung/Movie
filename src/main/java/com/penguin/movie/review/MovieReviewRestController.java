@@ -49,23 +49,23 @@ public class MovieReviewRestController {
 	}
 	
 	//삭제
-//	@DeleteMapping("/delete")
-//	public Map<String, String> deleteMovie(
-//			@RequestParam("movieId")int movieId
-//			, HttpSession session) {
-//		
-//		int Id = (Integer)session.getAttribute("Id");
-//		int count = movieService.deleteMovie(movieId, Id);
-//		
-//		Map<String, String> resultMap = new HashMap<>();
-//		
-//		if(count == 1) {
-//			resultMap.put("result", "success");
-//		} else {
-//			resultMap.put("result", "fail");
-//		}
-//		return resultMap;
-//	}
+	@DeleteMapping("/delete")
+	public Map<String, String> deleteMovie(
+			@RequestParam("movieId")int movieId
+			, HttpSession session) {
+		
+		int Id = (Integer)session.getAttribute("Id");
+		int count = movieService.deleteMovie(movieId, Id);
+		
+		Map<String, String> resultMap = new HashMap<>();
+		
+		if(count == 1) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		return resultMap;
+	}
 	
 	@DeleteMapping("/delete")
 	public Map<String, String> deleteMovie(
