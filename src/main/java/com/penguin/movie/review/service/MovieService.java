@@ -19,27 +19,35 @@ public class MovieService {
 	private MovieRepository movieRepository;
 	
 	
-	
-	
+
 	
 	
 	//영화 삭제
-	public int deleteMovie(int movieId, int Id) {
-	   
-		Movie movie = movieRepository.selectMovie(movieId);
-
-
-	 // 영화를 찾을 수 없거나 ID가 일치하지 않을때
-	    if(movie == null || movie.getId() != Id) {
-		return 0; 
+	 public int deleteMovie(int movieId) {
+	        
+		 int count = movieRepository.deleteMovie(movieId);
+	        
+	        
+	        return count;
 	    }
+	
 
-	    // 이미지 삭제
-	    FileManager.removeFile(movie.getImagePath());
+	 
+	 //영화 삭제 
+//	public int deleteMovie(int movieId, int id) {
+//		
+//		Movie movie = movieRepository.selectMovie(movieId);
+//		
+//		if(movie.getId() != id) {
+//			return 0;
+//			
+//		}
+//		
+//		FileManager.removeFile(movie.getImagePath());
+//		
+//		return movieRepository.deleteMovie(movieId);
+//	}
 
-	    // 영화 데이터 삭제
-	    return movieRepository.deleteMovie(movieId);
-	}
 	
 	
 	

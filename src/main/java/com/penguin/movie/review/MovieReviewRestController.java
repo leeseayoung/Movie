@@ -48,14 +48,16 @@ public class MovieReviewRestController {
 		return resultMap;
 	}
 	
+
+	
 	//삭제
 	@DeleteMapping("/delete")
 	public Map<String, String> deleteMovie(
 			@RequestParam("movieId")int movieId
 			, HttpSession session) {
 		
-		int Id = (Integer)session.getAttribute("Id");
-		int count = movieService.deleteMovie(movieId, Id);
+//		int id = (Integer)session.getAttribute("id");
+		int count = movieService.deleteMovie(movieId);
 		
 		Map<String, String> resultMap = new HashMap<>();
 		
@@ -67,29 +69,36 @@ public class MovieReviewRestController {
 		return resultMap;
 	}
 	
-	@DeleteMapping("/delete")
-	public Map<String, String> deleteMovie(
-	    @RequestParam("movieId") int movieId,
-	    HttpSession session) {
 
-	    Map<String, String> resultMap = new HashMap<>();
-
-	    // Check if the "Id" attribute exists in the session
-	    Integer id = (Integer) session.getAttribute("Id");
-
-	    if (id != null) {
-	        int count = movieService.deleteMovie(movieId, id.intValue());
-	        if (count == 1) {
-	            resultMap.put("result", "success");
-	        } else {
-	            resultMap.put("result", "fail");
-	        }
-	    } else {
-	        resultMap.put("result", "fail");
-	    }
-
-	    return resultMap;
-	}
+//	@DeleteMapping("/delete")
+//	public Map<String, String> deleteMovie(
+//	        @RequestParam("movieId") int movieId,
+//	        HttpSession session) {
+//
+//	    // 세션에서 "id" 속성 가져오기
+//	    Integer id = (Integer) session.getAttribute("id");
+//
+//	    // id가 null인 경우를 확인하여 처리
+//	    if (id == null) {
+//	       
+//	        Map<String, String> resultMap = new HashMap<>();
+//	        resultMap.put("result", "fail");
+//	        return resultMap;
+//	    }
+//
+//	    // 여기에 이어서 영화 삭제 로직을 실행
+//	    int count = movieService.deleteMovie(movieId, id);
+//
+//	    Map<String, String> resultMap = new HashMap<>();
+//	    if (count == 1) {
+//	        resultMap.put("result", "success");
+//	    } else {
+//	        resultMap.put("result", "fail");
+//	    }
+//	    return resultMap;
+//	}
+ 
+	
 	
 	
 }
