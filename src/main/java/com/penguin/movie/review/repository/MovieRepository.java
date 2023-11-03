@@ -11,6 +11,10 @@ import com.penguin.movie.review.domain.Movie;
 public interface MovieRepository {
 
 	
+	
+	
+	
+	
 	//영화 삭제
 	public int deleteMovie(@Param("movieId")int movieId);
 	

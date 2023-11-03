@@ -80,12 +80,4 @@ public class Movie {
 	}
 	
 	
-
-	
-	
-	
-	
-	
-	
-	
 }
