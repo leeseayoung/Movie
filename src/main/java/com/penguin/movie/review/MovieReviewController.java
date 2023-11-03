@@ -26,10 +26,15 @@ public class MovieReviewController {
 	
 	
 	
+	
+	
 	//세팅 model , session  영화 저장 기능 불러오기
 	@GetMapping("/main-view")
 	public String movieReview(Model model
 			, HttpSession session) {
+		
+		//세션 에서 정보 불러오기
+		int id = (Integer)session.getId(id);
 		
 		
 		//영화 정보 불러오기

@@ -12,7 +12,7 @@ public class FileManager {
 
 	
 	// 상수(변하지 않은수) 모두 대문자					   "D:\LeeProject2 집에서는2 학원에는 없음
-	public final static String FILE_UPLOAD_PATH = "D:\\LeeProject2\\movieProject\\uplod\\movieProject";
+	public final static String FILE_UPLOAD_PATH = "D:\\LeeProject\\movieProject\\uplod\\movieProject";
 
 
 

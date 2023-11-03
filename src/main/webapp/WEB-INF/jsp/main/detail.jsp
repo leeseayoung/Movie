@@ -135,12 +135,10 @@
             	<div class="d-flex justify-content-end">
 	            	<c:if test="${not empty managerCode}">
 	            		<div class="pr-3">
-				    	<a href="http://localhost:8080/movie/create-view" class="btn btn-danger">영화 삭제</a>
-	            		
+				    		<button type="button" class="btn btn-danger" id="deleteBtn" data-movie-id="${movieDetail.id}">영화 삭제</button>
 	            		</div>
 	            		<div>
-				    	<a href="http://localhost:8080/movie/create-view" class="btn btn-primary">영화 수정</a>
-	            		
+				    		<button type="button" class="btn btn-primary" id="deleteBtn" data-movie-id="${movieDetail.id}">영화 수정</button>
 	            		</div>
 					</c:if>
             	</div>
@@ -159,6 +157,42 @@
 	
 	
 	<script>
+	$(document).ready(function() {
+		
+		//삭제 기능
+		$("#deleteBtn").on("click", function() {
+			
+			let movieId = $(this).data("movie-id");
+			
+			
+		
+			$.ajax({
+				type:"delete"
+				, url:"/movie/delete"
+				, data:{"movieId":movieId}
+				, success:function(data) {
+					if(data.result == "success") {
+						location.href = "/movie/main-view"
+					} else {
+						alert("영화 삭제 실패!");
+					}
+				}
+				, error:function() {
+					alert("영화 삭제 에러!");
+				}
+			
+		
+			});
+			
+			
+			
+		});		
+		
+		
+		
+	});
+	
+	
 	
 	</script>
 	

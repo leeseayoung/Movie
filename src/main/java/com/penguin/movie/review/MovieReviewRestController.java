@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,7 +25,7 @@ public class MovieReviewRestController {
 	//영화 추가 기능 
 	@PostMapping("/create")
 	public Map<String, String> createPost(
-			 @RequestParam("title") String title
+			  @RequestParam("title") String title
 			 , @RequestParam("genre") String genre
 			 , @RequestParam("runTime") String runTime
 			 , @RequestParam("releaseDate") String releaseDate
@@ -46,6 +47,26 @@ public class MovieReviewRestController {
 		
 		return resultMap;
 	}
+	
+	//삭제
+	@DeleteMapping("/delete")
+	public Map<String, String> deleteMovie(
+			@RequestParam("movieId")int movieId
+			, HttpSession session) {
+		
+		int Id = (Integer)session.getAttribute("Id");
+		int count = movieService.deleteMovie(movieId, Id);
+		
+		Map<String, String> resultMap = new HashMap<>();
+		
+		if(count == 1) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		return resultMap;
+	}
+	
 	
 	
 	

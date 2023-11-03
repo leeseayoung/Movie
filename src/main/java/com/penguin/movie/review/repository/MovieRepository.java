@@ -10,9 +10,14 @@ import com.penguin.movie.review.domain.Movie;
 @Repository
 public interface MovieRepository {
 
+	
+	//영화 삭제
+	public int deleteMovie(@Param("movieId")int movieId);
+	
+	
 	//영화 추가  
 	public int insertMovie(
-			@Param("title")String title // 제목
+			 @Param("title")String title // 제목
 			, @Param("genre")String genre // 장르
 			, @Param("runTime")String runTime //런타임
 			, @Param("releaseDate")String releaseDate //개봉일
