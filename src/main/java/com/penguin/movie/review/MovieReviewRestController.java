@@ -49,25 +49,47 @@ public class MovieReviewRestController {
 	}
 	
 	//삭제
+//	@DeleteMapping("/delete")
+//	public Map<String, String> deleteMovie(
+//			@RequestParam("movieId")int movieId
+//			, HttpSession session) {
+//		
+//		int Id = (Integer)session.getAttribute("Id");
+//		int count = movieService.deleteMovie(movieId, Id);
+//		
+//		Map<String, String> resultMap = new HashMap<>();
+//		
+//		if(count == 1) {
+//			resultMap.put("result", "success");
+//		} else {
+//			resultMap.put("result", "fail");
+//		}
+//		return resultMap;
+//	}
+	
 	@DeleteMapping("/delete")
 	public Map<String, String> deleteMovie(
-			@RequestParam("movieId")int movieId
-			, HttpSession session) {
-		
-		int Id = (Integer)session.getAttribute("Id");
-		int count = movieService.deleteMovie(movieId, Id);
-		
-		Map<String, String> resultMap = new HashMap<>();
-		
-		if(count == 1) {
-			resultMap.put("result", "success");
-		} else {
-			resultMap.put("result", "fail");
-		}
-		return resultMap;
+	    @RequestParam("movieId") int movieId,
+	    HttpSession session) {
+
+	    Map<String, String> resultMap = new HashMap<>();
+
+	    // Check if the "Id" attribute exists in the session
+	    Integer id = (Integer) session.getAttribute("Id");
+
+	    if (id != null) {
+	        int count = movieService.deleteMovie(movieId, id.intValue());
+	        if (count == 1) {
+	            resultMap.put("result", "success");
+	        } else {
+	            resultMap.put("result", "fail");
+	        }
+	    } else {
+	        resultMap.put("result", "fail");
+	    }
+
+	    return resultMap;
 	}
-	
-	
 	
 	
 }

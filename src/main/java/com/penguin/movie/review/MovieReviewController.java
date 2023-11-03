@@ -34,7 +34,7 @@ public class MovieReviewController {
 			, HttpSession session) {
 		
 		//세션 에서 정보 불러오기
-		int id = (Integer)session.getId(id);
+		
 		
 		
 		//영화 정보 불러오기
