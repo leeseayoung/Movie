@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>         
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,17 +29,19 @@
                 </c:if>
             </div>
         </header>
-        <h1 class="text-center mt-4"><a class="text-warning">영화 정보</a></h1>
+        <h1 class="text-center pt-2"><a class="text-warning">영화 정보</a></h1>
         <section class="contents d-flex">
             <nav class="main-menu col-2 p-0">
                 <ul class="nav flex-column">
                     <li class="nav-item menu-item"><a href="http://localhost:8080/movie/main-view" class="nav-link text-dark font-weight-bold">현재 상영중</a></li>
                     <li class="nav-item menu-item"><a href="https://www.naver.com/" class="nav-link text-dark font-weight-bold">미상영 영화</a></li>
+                    <li class="nav-item menu-item"><a href="#" class="nav-link text-dark font-weight-bold">내가 찜한 영화</a></li>
                     <li class="nav-item menu-item"><a href="#" class="nav-link text-dark font-weight-bold">내가 쓴 감상평</a></li>
                 </ul>
             </nav>
             <article class="main-contents col-10 justify-content-around py-4">
                 <div class="d-flex">
+                
                     <div class="mr-3">
                         <img alt="영화 이미지" class="movie-image" src="${movieDetail.imagePath}">
                     </div>
@@ -54,25 +57,54 @@
                 </div>
                 <!-- 영화 감상평, 한줄평, 찜 -->
                 <div class="d-flex justify-content-end">
-                    <div class="action-item pr-3">
+                    <div class="action-item pr-3 pt-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
                             <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
                         </svg>
                         <label>찜 하기!</label>
                     </div>
-                    <div class="action-item pr-3">
+                    <div class="action-item pr-2 pt-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                         </svg>
                         <label>감상평!</label>
                     </div>
+                    
+                    <!-- 한줄평 -->
                     <div class="action-item">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
-                            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
-                        </svg>
-                        <label>한줄평!</label>
-                    </div>
+					    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#reviewModal">
+					        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+					            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
+					        </svg>
+					        <label>한줄평!</label>
+					    </button>
+					
+					    <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+					        <div class="modal-dialog">
+					            <div class="modal-content">
+					                <div class="modal-header">
+					                    <h5 class="modal-title" id="reviewModalLabel">한줄평 남기기</h5>
+					                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					                </div>
+					                <div class="modal-body">
+					                    <form>
+					                        <div class="mb-3">
+					                            <label for="review-text" class="col-form-label">한줄평:</label>
+					                            <textarea class="form-control" id="review-text" rows="4"></textarea>
+					                        </div>
+					                    </form>
+					                </div>
+					                <div class="modal-footer">
+					                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+					                    <button type="button" class="btn btn-primary">저장</button>
+					                </div>
+					            </div>
+					        </div>
+					    </div>
+					</div>
+                	<!-- 한줄평 끝-->
+                
                 </div>
                  <!-- 영화 감상평, 한줄평, 찜  끝-->
 
@@ -80,23 +112,39 @@
                     <h1 class="pt-3">한줄평</h1>
 
                     <!-- 한줄평 시작!-->
-                    <div class="comment">
-                        <div class="user-nickname">유저 닉네임:</div>
-                        <div class="comment-text">한줄평 : </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="heart pt-2" width="50" height="50" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.920 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.060.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                        </svg>
-                    </div>
+                   <div class="row">
+                        <div class="commentp pl-2">
+                            <div class="user-nickname">유저 닉네임 : </div>
+                            <div class="comment-text">한줄평 : </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="heart pt-2" width="50" height="50" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.920 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.060.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                            </svg>
+                        </div>
 
-                    <div class="comment pt-3">
-                        <div class="user-nickname">유저 닉네임 : </div>
-                        <div class="comment-text">한줄평 : </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="heart pt-2" width="50" height="50" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.920 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.060.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                        </svg>
+                        <div class="comment pl-4">
+                            <div class="user-nickname">유저 닉네임 : </div>
+                            <div class="comment-text">한줄평 : </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="heart pt-2" width="40" height="40" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.920 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.060.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                            </svg>
+                        </div>
                     </div>
                     <!-- 한줄평 시작 끝!-->
                 </div>
+            
+            	<div class="d-flex justify-content-end">
+	            	<c:if test="${not empty managerCode}">
+	            		<div class="pr-3">
+				    	<a href="http://localhost:8080/movie/create-view" class="btn btn-danger">영화 삭제</a>
+	            		
+	            		</div>
+	            		<div>
+				    	<a href="http://localhost:8080/movie/create-view" class="btn btn-primary">영화 수정</a>
+	            		
+	            		</div>
+					</c:if>
+            	</div>
+            
             </article>
         </section>
     </div>
@@ -104,5 +152,16 @@
     <footer class="bg-secondary d-flex justify-content-center align-items-center text-white">
         <h5>2023 펭귄 리뷰</h5>
     </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+	
+	<script>
+	
+	</script>
+	
+    
 </body>
 </html>

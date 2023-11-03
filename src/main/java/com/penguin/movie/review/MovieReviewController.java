@@ -64,6 +64,10 @@ public class MovieReviewController {
 		
 		model.addAttribute("movieDetail", movieDetail);
 		
+		//삭제,추가(관리자 코드가 있으면 삭제, 추가 버튼 가져오기)
+		
+	
+		
 		return "main/detail";
 	}
 	
