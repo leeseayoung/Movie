@@ -49,6 +49,15 @@ public class MovieReviewController {
 	
 	
 	
+	//영화 업데이트
+	@GetMapping("/update-view")
+	public String updateMovie() {
+		
+		
+		return "main/updateMovie";
+	}
+	
+	
 	
 	
 	

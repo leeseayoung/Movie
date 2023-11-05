@@ -19,7 +19,15 @@ public class MovieService {
 	private MovieRepository movieRepository;
 	
 	
-
+	//업데이트
+	public int updateMovie(int movieId, String title, String genre , String releaseDate , String runTime, String plot) {
+		
+		return movieRepository.updateMovie(movieId, title, genre, releaseDate, runTime, plot);
+	}
+	
+	
+	
+	
 	
 	
 	//영화 삭제

@@ -79,6 +79,23 @@
   			`id`= #{movieId}
   	</delete>
   
+  	<update id="updateMovie" parameterType="map">
+  		UPDATE
+  		 	`movie`
+  		SET	
+  			`title` = #{title}
+  			, `genre` = #{genre}
+  			, `runTime` = #{runTime}
+  			, `releaseDate` = #{releaseDate}
+  			, `plot` = #{plot}
+  			
+  		WHERE
+  			`id`= #{movieId}		
+  	
+  	
+  	</update>
+  	
+  
   
   
   </mapper>

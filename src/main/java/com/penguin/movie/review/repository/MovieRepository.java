@@ -11,8 +11,14 @@ import com.penguin.movie.review.domain.Movie;
 public interface MovieRepository {
 
 	
-	
-	
+	//영화 업데이트
+	public int updateMovie(
+			@Param("movieId") int movieId
+			, @Param("title") String title
+			, @Param("genre") String genre
+			, @Param("releaseDate") String releaseDate 
+			, @Param("runTime") String runTime
+			, @Param("plot") String plot);
 	
 	
 	//영화 삭제

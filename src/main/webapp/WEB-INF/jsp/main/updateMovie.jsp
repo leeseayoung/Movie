@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>영화 상세 정보</title>
+    <title>영화 업데이트</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/detailPage.css" type="text/css">
 </head>
@@ -46,21 +46,17 @@
                         <img alt="영화 이미지" class="movie-image" src="${movieDetail.imagePath}">
                     </div>
                     <div>
-                     
-                        <label><b>개봉일 : </b></label><input type="text" class="form-control col-5" id="titleInput" value="${movieDetail.title}">
-                    
-                        <label><b>개봉일 : </b></label><input type="text" class="form-control col-7" id="genreInput" value="${movieDetail.genre}">
-                      
-                        <label><b>개봉일 : </b></label><input type="text" class="form-control col-5" id="runTimeInput" value="${movieDetail.runTime}">
-                       
-                        <label><b>개봉일 : </b></label><input type="text" class="form-control col-6" id="titleInput" value="${movieDetail.releaseDate}">
+                        <p class="movie-info" id="titleInput"><strong>제목 : </strong> ${movieDetail.title}</p>
+                        <p class="movie-info" id="genreInput"><strong>장르 : </strong> ${movieDetail.genre}</p>
+                        <p class="movie-info" id="runTimeInput"><strong>러닝 타임 : </strong> ${movieDetail.runTime}</p>
+                        <p class="movie-info" id="releaseDateInput"><strong>개봉일 : </strong>  ${movieDetail.releaseDate}</p>
+                        <label><h4>개봉일 : </h4></label><input type="text" class="form-control col-5" id="titleInput" value="${movieDetail.releaseDate}">
                        
                     </div>
                 </div>
                 <div>
-                   
-                    <label><b>줄거리 : </b></label><br>
-                    <textarea class="movie-info" rows="10" cols="100" id="plotInput" cols="200" rows="5" >${movieDetail.plot}</textarea>
+                    <p class="movie-info" id="plotInput"><strong>줄거리 : </strong> ${movieDetail.plot}</p>
+                    <textarea class="movie-info" rows="5" id="plotInput">${movieDetail.plot}</textarea>
                 </div>
                 <!-- 영화 감상평, 한줄평, 찜 -->
                 <div class="d-flex justify-content-end">
@@ -165,88 +161,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	
 	
-	<script>
-	$(document).ready(function() {
-		
-		//수정
-		$("#modifyBtn").on("click", function() {
-			let title = $("#titleInput").val();
-			let genre = $("#genreInput").val();
-			let releaseDate = $("#releaseDateInput").val();
-			let runTime = $("#runTimeInput").val();
-			let plot = $("#runTimeInput").val();
-			let movieId = $(this).data("movie-id");
-			
-			
-			$.ajax({
-				type:"put"
-				, url:"/movie/update"
-				, data:{"title":title, "genre":genre, "releaseDate":releaseDate, "runTime":runTime, "plot":plot, "movieId":movieId}
-				, success:function(data) {
-					if(data.result == "success") {
-						location.href = "/movie/main-view";
-					} else {
-						alert("영화 수정 실패");
-					}
-				}
-				, error:function() {
-					alert("영화 수정 에러");
-				}
-				
-				
-			});
-			
-		});
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		//삭제 기능
-		$("#deleteBtn").on("click", function() {
-			
-			let movieId = $(this).data("movie-id");
-			
-			
-		
-			$.ajax({
-				type:"delete"
-				, url:"/movie/delete"
-				, data:{"movieId":movieId}
-				, success:function(data) {
-					if(data.result == "success") {
-						location.href = "/movie/main-view"
-					} else {
-						alert("영화 삭제 실패!");
-					}
-				}
-				, error:function() {
-					alert("영화 삭제 에러!");
-				}
-			
-		
-			});
-			
-			
-			
-		});		
-		
-		
-		
-	});
-	
-	
-	
-	</script>
+
 	
     
 </body>
