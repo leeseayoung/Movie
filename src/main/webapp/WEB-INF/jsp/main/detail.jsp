@@ -189,25 +189,29 @@
 			
 			//모달 저장
 			$("#model-save").on("click", function() {
-
+				let movieId = $(this).data("movie-id");
 				let review = $("#review-text").val();
+				alert(movieId);
 				
 				$.ajax({
-					type: "post"
-					, url: "/movie/oneLineReview"
-					, data: {"review":review}
-					, success: function() {
-						if(data.result == "success") {
-							alert("한줄평 성공");
-						} else {
-							alert("한줄평 실패!");
-						}
-					}
-					, error: function() {
-						alert("한줄평 에러!");
-					}
-					
+				    type: "post",
+				    url: "/movie/oneLineReview",
+				    data: {
+				        "movieId": movieId,  
+				        "review": review
+				    },
+				    success: function(data) {
+				        if (data.result == "success") {
+				            alert("한줄평 성공");
+				        } else {
+				            alert("한줄평 실패!");
+				        }
+				    },
+				    error: function() {
+				        alert("한줄평 에러!");
+				    }
 				});
+
 				
 				
 	        });
