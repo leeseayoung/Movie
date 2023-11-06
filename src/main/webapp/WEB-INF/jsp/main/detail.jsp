@@ -191,6 +191,7 @@
 			$("#model-save").on("click", function() {
 				let movieId = $(this).data("movie-id");
 				let review = $("#review-text").val();
+				
 				alert(movieId);
 				
 				$.ajax({
