@@ -16,8 +16,8 @@ public interface MovieRepository {
 			@Param("movieId") int movieId
 			, @Param("title") String title
 			, @Param("genre") String genre
-			, @Param("releaseDate") String releaseDate 
 			, @Param("runTime") String runTime
+			, @Param("releaseDate") String releaseDate 
 			, @Param("plot") String plot);
 	
 	

@@ -49,12 +49,18 @@ public class MovieReviewController {
 	
 	
 	
-	//영화 업데이트
-	@GetMapping("/update-view")
-	public String updateMovie() {
+	//영화 찜
+	@GetMapping("/favorite-view")
+	public String favoriteMovie(
+			Model model
+			, HttpSession session) {
 		
+		//영화 정보 불러오기
+		List<MovieDetail> movieList = movieService.getMovieList();
 		
-		return "main/updateMovie";
+		model.addAttribute("movieList", movieList);
+		
+		return "main/favoriteMovie";
 	}
 	
 	

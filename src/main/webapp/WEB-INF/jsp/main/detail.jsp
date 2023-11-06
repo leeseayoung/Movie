@@ -34,7 +34,7 @@
             <nav class="main-menu col-2 p-0">
                 <ul class="nav flex-column">
                     <li class="nav-item menu-item"><a href="http://localhost:8080/movie/main-view" class="nav-link text-dark font-weight-bold">현재 상영중</a></li>
-                    <li class="nav-item menu-item"><a href="https://www.naver.com/" class="nav-link text-dark font-weight-bold">미상영 영화</a></li>
+                    <li class="nav-item menu-item"><a href="http://localhost:8080/movie/favorite-view" class="nav-link text-dark font-weight-bold">미상영 영화</a></li>
                     <li class="nav-item menu-item"><a href="#" class="nav-link text-dark font-weight-bold">내가 찜한 영화</a></li>
                     <li class="nav-item menu-item"><a href="#" class="nav-link text-dark font-weight-bold">내가 쓴 감상평</a></li>
                 </ul>
@@ -47,21 +47,22 @@
                     </div>
                     <div>
                      
-                        <label><b>개봉일 : </b></label><input type="text" class="form-control col-5" id="titleInput" value="${movieDetail.title}">
+                        <label><b>제목 : </b></label><input type="text" class="form-control col-5" id="titleInput" value="${movieDetail.title}">
                     
-                        <label><b>개봉일 : </b></label><input type="text" class="form-control col-7" id="genreInput" value="${movieDetail.genre}">
+                        <label><b>장르 : </b></label><input type="text" class="form-control col-7" id="genreInput" value="${movieDetail.genre}">
                       
-                        <label><b>개봉일 : </b></label><input type="text" class="form-control col-5" id="runTimeInput" value="${movieDetail.runTime}">
+                        <label><b>러닝 타임 : </b></label><input type="text" class="form-control col-4" id="runTimeInput" value="${movieDetail.runTime}">
                        
-                        <label><b>개봉일 : </b></label><input type="text" class="form-control col-6" id="titleInput" value="${movieDetail.releaseDate}">
+                        <label><b>개봉일 : </b></label><input type="text" class="form-control col-6" id="releaseDateInput" value="${movieDetail.releaseDate}">
                        
                     </div>
                 </div>
-                <div>
-                   
+                
+                <div>                   
                     <label><b>줄거리 : </b></label><br>
                     <textarea class="movie-info" rows="10" cols="100" id="plotInput" cols="200" rows="5" >${movieDetail.plot}</textarea>
                 </div>
+              
                 <!-- 영화 감상평, 한줄평, 찜 -->
                 <div class="d-flex justify-content-end">
                     <div class="action-item pr-3 pt-2">
@@ -168,35 +169,32 @@
 	<script>
 	$(document).ready(function() {
 		
-		//수정
-		$("#modifyBtn").on("click", function() {
-			let title = $("#titleInput").val();
-			let genre = $("#genreInput").val();
-			let releaseDate = $("#releaseDateInput").val();
-			let runTime = $("#runTimeInput").val();
-			let plot = $("#runTimeInput").val();
-			let movieId = $(this).data("movie-id");
-			
-			
-			$.ajax({
-				type:"put"
-				, url:"/movie/update"
-				, data:{"title":title, "genre":genre, "releaseDate":releaseDate, "runTime":runTime, "plot":plot, "movieId":movieId}
-				, success:function(data) {
-					if(data.result == "success") {
-						location.href = "/movie/main-view";
-					} else {
-						alert("영화 수정 실패");
-					}
-				}
-				, error:function() {
-					alert("영화 수정 에러");
-				}
-				
-				
+			//업데이트
+			$("#modifyBtn").on("click", function() {
+		    let title = $("#titleInput").val();
+		    let genre = $("#genreInput").val();
+		    let releaseDate = $("#releaseDateInput").val();
+		    let runTime = $("#runTimeInput").val();
+		    let plot = $("#plotInput").val(); 
+		    let movieId = $(this).data("movie-id");
+		
+		    
+			    $.ajax({
+			        type: "put",
+			        url: "/movie/update",
+			        data: {"title": title, "genre": genre, "releaseDate": releaseDate, "runTime": runTime, "plot": plot, "movieId": movieId},
+			        success: function(data) {				
+			            if (data.result === "success") {
+			                location.href = "/movie/main-view";
+			            } else {
+			                alert("영화 수정 실패");
+			            }
+			        },
+			        error: function() {
+			            alert("영화 수정 에러");
+			        }
+			    });
 			});
-			
-		});
 		
 		
 		

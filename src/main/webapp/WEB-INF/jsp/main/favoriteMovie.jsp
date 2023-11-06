@@ -30,7 +30,7 @@
 					</c:if>
                 </div>
             </header>
-            <h1 class="text-center">현재 상영중</h1>
+            <h1 class="text-center">미상영 영화</h1>
             <section class="contents d-flex">
                 <nav class="main-menu col-2 p-0">
                     <ul class="nav flex-column">
@@ -54,7 +54,7 @@
 					    <div class="row">
 					        
 					        <c:forEach var="movie" items="${movieList}">
-					       	 <c:if test="${movie.screenBox}">
+					       	 <c:if test="${movie.screenBox == false}">
 					       
 					            <div class="col-12 col-sm-6 col-md-4 col-lg-3"> 
 					                <section>

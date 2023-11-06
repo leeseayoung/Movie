@@ -56,8 +56,8 @@ public class MovieReviewRestController {
 	public Map<String, String> updateMovie(
 			@RequestParam("title")String title
 			, @RequestParam("genre")String genre
-			, @RequestParam("releaseDate")String releaseDate
 			, @RequestParam("runTime")String runTime
+			, @RequestParam("releaseDate")String releaseDate
 			, @RequestParam("plot")String plot
 			, @RequestParam("movieId")int movieId) {
 		

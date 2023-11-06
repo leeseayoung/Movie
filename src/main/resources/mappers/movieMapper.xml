@@ -79,6 +79,7 @@
   			`id`= #{movieId}
   	</delete>
   
+  
   	<update id="updateMovie" parameterType="map">
   		UPDATE
   		 	`movie`
