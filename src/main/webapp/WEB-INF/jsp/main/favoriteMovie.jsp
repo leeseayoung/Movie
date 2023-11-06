@@ -66,10 +66,10 @@
 					                        장르 : ${movie.genre}
 					                    </div>
 					                    <div class="small text-secondary">
-					                        런 타임 : ${movie.runTime}
+					                        러닝 타임 : ${movie.runTime}
 					                    </div>
 					                    <div class="small text-secondary">
-					                        개봉일 : ${movie.releaseDate}
+					                      	개봉일 : ${movie.releaseDate}
 					                    </div>
 					                </section>
 					            </div>

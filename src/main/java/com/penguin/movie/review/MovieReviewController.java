@@ -49,7 +49,7 @@ public class MovieReviewController {
 	
 	
 	
-	//영화 찜
+	//영화 미상영 영화
 	@GetMapping("/favorite-view")
 	public String favoriteMovie(
 			Model model

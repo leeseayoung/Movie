@@ -19,10 +19,22 @@ public class MovieService {
 	private MovieRepository movieRepository;
 	
 	
-	//업데이트
-	public int updateMovie(int movieId, String title, String genre , String releaseDate , String runTime, String plot) {
+	
+	
+	//영화 추가  //, MultipartFile file, Boolean checkBox
+	public int addMovie(String title, String genre, String runTime, String releaseDate, String plot , MultipartFile file, Boolean screenBox) {
 		
-		return movieRepository.updateMovie(movieId, title, genre, releaseDate, runTime, plot);
+		//사진(파일) 저장
+		String imagePath =  FileManager.saveFile(file);
+		
+		return movieRepository.insertMovie(title, genre, runTime, releaseDate, plot, imagePath, screenBox);
+	}
+	
+	
+	//업데이트
+	public int updateMovie(int movieId, String title, String genre , String runTime ,  String releaseDate, String plot) {
+		
+		return movieRepository.updateMovie(movieId, title, genre, runTime, releaseDate, plot);
 	}
 	
 	
@@ -61,14 +73,6 @@ public class MovieService {
 	
 	
 	
-	//영화 추가  //, MultipartFile file, Boolean checkBox
-	public int addMovie(String title, String genre, String runTime, String releaseDate, String plot , MultipartFile file, Boolean screenBox) {
-		
-		//사진(파일) 저장
-		String imagePath =  FileManager.saveFile(file);
-		
-		return movieRepository.insertMovie(title, genre, runTime, releaseDate, plot, imagePath, screenBox);
-	}
 	
 	
 	

@@ -6,6 +6,10 @@
   
   <mapper namespace="com.penguin.movie.review.repository.MovieRepository">
   	
+  	
+  	
+  	
+  	
   	<!-- 영화 추가 기능 -->
   	<insert id="insertMovie" parameterType="map">
   		INSERT INTO

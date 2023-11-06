@@ -54,15 +54,15 @@ public class MovieReviewRestController {
 	//업데이트
 	@PutMapping("/update")
 	public Map<String, String> updateMovie(
-			@RequestParam("title")String title
+			@RequestParam("movieId")int movieId
+			, @RequestParam("title")String title
 			, @RequestParam("genre")String genre
 			, @RequestParam("runTime")String runTime
 			, @RequestParam("releaseDate")String releaseDate
-			, @RequestParam("plot")String plot
-			, @RequestParam("movieId")int movieId) {
+			, @RequestParam("plot")String plot) {
 		
 		
-		int count = movieService.updateMovie(movieId, title, genre, releaseDate, runTime, plot);
+		int count = movieService.updateMovie(movieId, title, genre, runTime, releaseDate, plot);
 		
 		Map<String, String> resultMap = new HashMap<>();
 		

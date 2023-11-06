@@ -11,6 +11,9 @@ import com.penguin.movie.review.domain.Movie;
 public interface MovieRepository {
 
 	
+	
+	
+	
 	//영화 업데이트
 	public int updateMovie(
 			@Param("movieId") int movieId
@@ -19,6 +22,7 @@ public interface MovieRepository {
 			, @Param("runTime") String runTime
 			, @Param("releaseDate") String releaseDate 
 			, @Param("plot") String plot);
+	
 	
 	
 	//영화 삭제
