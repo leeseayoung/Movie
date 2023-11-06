@@ -17,10 +17,13 @@ public class UserService {
 	
 	
 	
-
 	
+	public User getUserById(int id) {
+		
+		User user = userRepository.findById(id).orElse(null);
+		return user;
 	
-	
+	}
 	
 	//로그인 기능
 	public User getUser(String loginId, String password) {

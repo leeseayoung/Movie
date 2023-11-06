@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.penguin.movie.oneLineReview.repository.ReviewRepository;
 import com.penguin.movie.review.domain.Movie;
 import com.penguin.movie.review.dto.MovieDetail;
 import com.penguin.movie.review.service.MovieService;
@@ -22,6 +23,8 @@ public class MovieReviewController {
 	@Autowired
 	private MovieService movieService;
 	
+	@Autowired
+	private ReviewRepository reviewRepository;
 	
 	
 	
@@ -33,7 +36,7 @@ public class MovieReviewController {
 	public String movieReview(Model model
 			, HttpSession session) {
 		
-		//세션 에서 정보 불러오기
+		
 		
 		
 		
@@ -57,6 +60,7 @@ public class MovieReviewController {
 		
 		//영화 정보 불러오기
 		List<MovieDetail> movieList = movieService.getMovieList();
+		
 		
 		model.addAttribute("movieList", movieList);
 		
@@ -83,6 +87,7 @@ public class MovieReviewController {
 		Movie movieDetail = movieService.getMovie(id);
 		
 		model.addAttribute("movieDetail", movieDetail);
+		
 		
 		//삭제,추가(관리자 코드가 있으면 삭제, 추가 버튼 가져오기)
 		

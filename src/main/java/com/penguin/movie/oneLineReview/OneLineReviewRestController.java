@@ -3,6 +3,8 @@ package com.penguin.movie.oneLineReview;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,12 +22,13 @@ public class OneLineReviewRestController {
 	//한줄평 기능
 	@PostMapping("/oneLineReview")
 	public Map<String, String> createReview( 
-			
-			@RequestParam("movieId")int movieId
-			, @RequestParam("review")String review) {
+			@RequestParam("userId")int userId
+			, @RequestParam("movieId")int movieId
+			, @RequestParam("review")String review
+			, HttpSession session) {
 			 
 		
-		int count =	 reviewService.addReview(movieId, review);
+		int count =	 reviewService.addReview(userId, movieId, review);
 				
 		Map<String, String> resultMap = new HashMap<>();
 				

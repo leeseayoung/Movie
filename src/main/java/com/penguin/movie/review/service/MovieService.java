@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.penguin.movie.common.FileManager;
+import com.penguin.movie.oneLineReview.dto.OneReviewDetail;
+import com.penguin.movie.oneLineReview.service.ReviewService;
 import com.penguin.movie.review.domain.Movie;
 import com.penguin.movie.review.dto.MovieDetail;
 import com.penguin.movie.review.repository.MovieRepository;
@@ -18,6 +20,8 @@ public class MovieService {
 	@Autowired
 	private MovieRepository movieRepository;
 	
+	@Autowired //댓글
+	private ReviewService reviewService;
 	
 	
 	
@@ -82,8 +86,14 @@ public class MovieService {
 		
 		List<Movie> movieList = movieRepository.selectMovieList();
 		
+		
+		
 		List<MovieDetail> movieDetailList = new ArrayList<>();
 		for(Movie movie:movieList) {
+			
+		//한줄평 가져오기	
+		List<OneReviewDetail> oneReviewList = reviewService.getOneReview(movie.getId());
+			
 			
 		//장르랑 제목만 일단	
 		MovieDetail movieDetail = MovieDetail.builder()
@@ -94,6 +104,7 @@ public class MovieService {
 								   .runTime(movie.getRunTime())
 								   .releaseDate(movie.getReleaseDate())
 								   .screenBox(movie.isScreenBox())
+								   .review(null)
 								   .build();
 			
 			

@@ -16,4 +16,7 @@ public class MovieDetail {
 	private String imagePath;
 	private boolean screenBox;
 	
+	private int userId;
+	private int movieId;
+	private String review;
 }

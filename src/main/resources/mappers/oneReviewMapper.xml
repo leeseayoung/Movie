@@ -23,5 +23,18 @@
  		       
  		</insert>
  
- 
+
+   	<select id="selectOneReviewList"
+  	resultType="com.penguin.movie.oneLineReview.domain.Review">
+ 			 SELECT
+ 			 	`id`
+ 			 	, `userId`
+  				, `movieId`
+  				, `review`	
+			FROM	 
+  				`onelinereview`
+  			ORDER BY	
+  				`id` DESC
+  	
+  	</select>
  </mapper> 
