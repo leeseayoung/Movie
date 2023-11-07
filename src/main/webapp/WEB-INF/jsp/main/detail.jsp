@@ -106,7 +106,7 @@
 					                <div class="modal-body">
 					                    <form>
 					                        <div class="mb-3">
-					                            <label for="review-text" class="col-form-label">한줄평: ${movieDetai.oneReviewList}</label>
+					                            <label for="review-text" class="col-form-label">한줄평: ${reviewDetail.id}</label>
 					                            <textarea class="form-control" id="review-text" placeholder="15자 이내" rows="4"></textarea>
 					                        </div>
 					                    </form>

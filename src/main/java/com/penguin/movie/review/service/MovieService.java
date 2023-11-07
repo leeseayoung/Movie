@@ -3,6 +3,7 @@ package com.penguin.movie.review.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.tomcat.jni.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -101,7 +102,7 @@ public class MovieService {
 				
 				
 			//한줄평 가져오기	
-			List<OneReviewDetail> oneReviewList = reviewService.getOneReview(movie.getId());
+			List<OneReviewDetail> oneReviewList = reviewService.getOneReviewList(movie.getId());
 				
 				
 			//장르랑 제목만 일단	
@@ -125,15 +126,61 @@ public class MovieService {
 	}
 	
 	
-	//한줄평 디테일 정보 
+	//한줄평 가져오기 
+//	public MovieDetail getMovieDetail(int id) {
+//		
+//		//한줄평 가져오기	
+//		List<MovieDetail> MovieDetailList = reviewService.getOneReviewList(id);
+//		
+//		//id
+//		Movie movie =  movieRepository.selectMovie(id);
+//		  
+//		MovieDetail movieDetail = MovieDetail.builder()
+//									.id(movie.getId())
+//									.imagePath(movie.getImagePath())
+//									.title(movie.getTitle())
+//									.genre(movie.getGenre())
+//									.runTime(movie.getRunTime())
+//									.releaseDate(movie.getReleaseDate())
+//									.screenBox(movie.isScreenBox())
+//									.oneReviewList(oneReviewList)
+//									.build();
+//
+//		return movieDetail;
+//	}
+//	
+	
+
 	public MovieDetail getMovieDetail(int id) {
-		
-		//id
-		Movie movie =  movieRepository.selectMovie(id);
-		
-		
-		
+	    // 한줄평 가져오기
+	    List<OneReviewDetail> oneReviewList = reviewService.getOneReviewList(id);
+
+	    // id
+	    Movie movie = movieRepository.selectMovie(id);
+
+	    MovieDetail movieDetail = MovieDetail.builder()
+					            .id(movie.getId())
+					            .imagePath(movie.getImagePath())
+					            .title(movie.getTitle())
+					            .genre(movie.getGenre())
+					            .runTime(movie.getRunTime())
+					            .releaseDate(movie.getReleaseDate())
+					            .screenBox(movie.isScreenBox())
+					            .oneReviewList(oneReviewList)
+					            .build();
+
+	    return movieDetail;
 	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

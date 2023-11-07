@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.penguin.movie.oneLineReview.domain.Review;
+import com.penguin.movie.oneLineReview.dto.OneReviewDetail;
 import com.penguin.movie.oneLineReview.repository.ReviewRepository;
+import com.penguin.movie.oneLineReview.service.ReviewService;
 import com.penguin.movie.review.domain.Movie;
 import com.penguin.movie.review.dto.MovieDetail;
 import com.penguin.movie.review.service.MovieService;
@@ -22,6 +25,9 @@ public class MovieReviewController {
 
 	@Autowired
 	private MovieService movieService;
+	
+	@Autowired //리뷰
+	private ReviewService reviewService;
 	
 	@Autowired
 	private ReviewRepository reviewRepository;
@@ -82,12 +88,18 @@ public class MovieReviewController {
 	
 	//영화 상세페이지
 	@GetMapping("/detail-view")
-	public String movieDetail(@RequestParam("id")int id, Model model) {
+	public String movieDetail(
+			@RequestParam("id")int id
+			, @RequestParam("movieId")int movieId
+			, Model model) {
 				//영화 정보 이름
 		Movie movieDetail = movieService.getMovie(id);
 		
-		//디테일
-//		List<MovieDetail> MovieDetail = 
+		//영화 한줄
+//		List<MovieDetail> movieDetail = movieService.getMovieList();
+		List<OneReviewDetail> reviewDetail = reviewService.getOneReviewList(movieId);
+		
+		model.addAttribute("reviewDetail", reviewDetail);
 		
 		model.addAttribute("movieDetail", movieDetail);
 		

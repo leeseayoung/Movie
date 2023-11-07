@@ -33,7 +33,7 @@ public class ReviewService {
 	
 	
 	//한줄평 정보 가져오기
-	public List<OneReviewDetail> getOneReview(int movieId) {
+	public List<OneReviewDetail> getOneReviewList(int movieId) {
 		
 		List<Review> reviewList = reviewRepository.selectOneReviewList(movieId);
 		

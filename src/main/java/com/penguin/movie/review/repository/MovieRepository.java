@@ -14,7 +14,7 @@ public interface MovieRepository {
 	
 	
 	//한줄평 조회
-//	public List<MovieDetail> selectOneReviewList(int movieId);
+	public List<MovieDetail> selectOneReviewList(int movieId);
 	
 	
 	
@@ -50,6 +50,8 @@ public interface MovieRepository {
 	
 	//영화 세부 정보 조회
 	public Movie selectMovie(@Param("id")int id);
+	
+	
 	
 	
 	
