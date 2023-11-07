@@ -11,5 +11,6 @@ public class OneReviewDetail {
 	private int userId;
 	private int movieId;
 	private String review;
+	private String loginId;
 	
 }

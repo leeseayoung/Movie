@@ -19,7 +19,10 @@ public class OneLineReviewRestController {
 	@Autowired
 	private ReviewService reviewService;
 	
-	//한줄평 기능
+	
+	
+	
+	//한줄평 저장 기능
 	@PostMapping("/oneLineReview")
 	public Map<String, String> createReview( 
 			@RequestParam("userId")int userId
@@ -27,7 +30,7 @@ public class OneLineReviewRestController {
 			, @RequestParam("review")String review
 			, HttpSession session) {
 			 
-		
+//		int loginId = (Integer)session.getAttribute("userId");
 		int count =	 reviewService.addReview(userId, movieId, review);
 				
 		Map<String, String> resultMap = new HashMap<>();

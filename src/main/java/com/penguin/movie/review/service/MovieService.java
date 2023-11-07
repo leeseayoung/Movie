@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.penguin.movie.common.FileManager;
+import com.penguin.movie.oneLineReview.domain.Review;
 import com.penguin.movie.oneLineReview.dto.OneReviewDetail;
 import com.penguin.movie.oneLineReview.service.ReviewService;
 import com.penguin.movie.review.domain.Movie;
 import com.penguin.movie.review.dto.MovieDetail;
 import com.penguin.movie.review.repository.MovieRepository;
+import com.penguin.movie.user.service.UserService;
 
 @Service
 public class MovieService {
@@ -20,9 +22,11 @@ public class MovieService {
 	@Autowired
 	private MovieRepository movieRepository;
 	
-	@Autowired //댓글
+	@Autowired //한줄평
 	private ReviewService reviewService;
 	
+	@Autowired //로그인정보
+	private UserService userService;
 	
 	
 	//영화 추가  //, MultipartFile file, Boolean checkBox
@@ -90,29 +94,49 @@ public class MovieService {
 		
 		List<MovieDetail> movieDetailList = new ArrayList<>();
 		for(Movie movie:movieList) {
+				
+			//리뷰의 아이디를 가지고와야됨	
 			
-		//한줄평 가져오기	
-		List<OneReviewDetail> oneReviewList = reviewService.getOneReview(movie.getId());
-			
-			
-		//장르랑 제목만 일단	
-		MovieDetail movieDetail = MovieDetail.builder()
-								   .id(movie.getId())
-								   .imagePath(movie.getImagePath())
-								   .title(movie.getTitle())
-								   .genre(movie.getGenre())
-								   .runTime(movie.getRunTime())
-								   .releaseDate(movie.getReleaseDate())
-								   .screenBox(movie.isScreenBox())
-								   .review(null)
-								   .build();
-			
-			
-		movieDetailList.add(movieDetail);	
+//			User user = userService.getUserById(userId);
+				
+				
+			//한줄평 가져오기	
+			List<OneReviewDetail> oneReviewList = reviewService.getOneReview(movie.getId());
+				
+				
+			//장르랑 제목만 일단	
+			MovieDetail movieDetail = MovieDetail.builder()
+									   .id(movie.getId())
+									   .imagePath(movie.getImagePath())
+									   .title(movie.getTitle())
+									   .genre(movie.getGenre())
+									   .runTime(movie.getRunTime())
+									   .releaseDate(movie.getReleaseDate())
+									   .screenBox(movie.isScreenBox())
+									   .oneReviewList(oneReviewList)									   
+									   .build();
+				
+				
+			movieDetailList.add(movieDetail);	
 		}
 		
 		return movieDetailList;
+	
 	}
+	
+	
+	//한줄평 디테일 정보 
+	public MovieDetail getMovieDetail(int id) {
+		
+		//id
+		Movie movie =  movieRepository.selectMovie(id);
+		
+		
+		
+	}
+	
+	
+	
 	
 	
 	//영화 정보 가져오기(id)일치하는 영화 정보

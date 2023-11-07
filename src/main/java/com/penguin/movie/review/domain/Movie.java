@@ -1,6 +1,9 @@
 package com.penguin.movie.review.domain;
 
 import java.util.Date;
+import java.util.List;
+
+import com.penguin.movie.oneLineReview.dto.OneReviewDetail;
 
 public class Movie {
 
@@ -16,6 +19,8 @@ public class Movie {
 	
 	private Date createdAt;
 	private Date updatedAt;
+	
+
 	
 	
 	public int getId() {

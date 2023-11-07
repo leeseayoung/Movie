@@ -86,6 +86,9 @@ public class MovieReviewController {
 				//영화 정보 이름
 		Movie movieDetail = movieService.getMovie(id);
 		
+		//디테일
+//		List<MovieDetail> MovieDetail = 
+		
 		model.addAttribute("movieDetail", movieDetail);
 		
 		

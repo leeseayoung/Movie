@@ -93,7 +93,7 @@
   			, `runTime` = #{runTime}
   			, `releaseDate` = #{releaseDate}
   			, `plot` = #{plot}
-  			
+  			, `updatedAt` = #{updatedAt}
   		WHERE
   			`id`= #{movieId}		
   	

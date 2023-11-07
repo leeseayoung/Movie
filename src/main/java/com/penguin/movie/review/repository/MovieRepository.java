@@ -6,11 +6,15 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.penguin.movie.review.domain.Movie;
+import com.penguin.movie.review.dto.MovieDetail;
 
 @Repository
 public interface MovieRepository {
 
 	
+	
+	//한줄평 조회
+//	public List<MovieDetail> selectOneReviewList(int movieId);
 	
 	
 	

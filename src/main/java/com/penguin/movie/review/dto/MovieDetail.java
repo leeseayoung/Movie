@@ -1,5 +1,9 @@
 package com.penguin.movie.review.dto;
 
+import java.util.List;
+
+import com.penguin.movie.oneLineReview.dto.OneReviewDetail;
+
 import lombok.Builder;
 import lombok.Getter;
 
@@ -16,7 +20,11 @@ public class MovieDetail {
 	private String imagePath;
 	private boolean screenBox;
 	
-	private int userId;
-	private int movieId;
-	private String review;
+
+  
+
+	private List<OneReviewDetail> oneReviewList;
+	private String loginId;
+	
+	
 }

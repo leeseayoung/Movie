@@ -32,7 +32,7 @@ public class ReviewService {
 	
 	
 	
-	//한줄평 가져오기
+	//한줄평 정보 가져오기
 	public List<OneReviewDetail> getOneReview(int movieId) {
 		
 		List<Review> reviewList = reviewRepository.selectOneReviewList(movieId);
@@ -48,6 +48,7 @@ public class ReviewService {
 					 							.userId(review.getUserId())
 					 							.movieId(review.getMovieId())
 					 							.review(review.getReview())
+					 							.loginId(user.getLoginId())
 					 							.build();
 			 
 			 oneReviewDetailList.add(oneReviewDetail);

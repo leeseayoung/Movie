@@ -22,8 +22,10 @@
  				)
  		       
  		</insert>
+ 		
+ 		
  
-
+					
    	<select id="selectOneReviewList"
   	resultType="com.penguin.movie.oneLineReview.domain.Review">
  			 SELECT
@@ -32,7 +34,7 @@
   				, `movieId`
   				, `review`	
 			FROM	 
-  				`onelinereview`
+  				`oneLineReview`
   			ORDER BY	
   				`id` DESC
   	
