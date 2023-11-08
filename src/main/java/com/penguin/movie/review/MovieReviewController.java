@@ -86,6 +86,7 @@ public class MovieReviewController {
 	}
 	
 	
+	
 	//영화 상세페이지
 	@GetMapping("/detail-view")
 	public String movieDetail(
@@ -93,13 +94,13 @@ public class MovieReviewController {
 //			, @RequestParam("movieId")int movieId
 			, Model model) {
 				//영화 정보 이름
-		Movie movieDetail = movieService.getMovie(id);
+		MovieDetail movieDetail = movieService.getMovieDetail(id);
 		
 		//영화 한줄
-//		List<MovieDetail> movieDetail = movieService.getMovieList();
-//		List<OneReviewDetail> reviewDetail = reviewService.getOneReviewList(movieId);
 		
-//		model.addAttribute("reviewDetail", reviewDetail);
+		
+		
+		
 		
 		model.addAttribute("movieDetail", movieDetail);
 		

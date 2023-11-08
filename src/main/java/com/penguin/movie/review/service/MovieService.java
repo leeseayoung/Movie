@@ -3,13 +3,12 @@ package com.penguin.movie.review.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.tomcat.jni.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.penguin.movie.common.FileManager;
-import com.penguin.movie.oneLineReview.domain.Review;
+import com.penguin.movie.like.service.LikeService;
 import com.penguin.movie.oneLineReview.dto.OneReviewDetail;
 import com.penguin.movie.oneLineReview.service.ReviewService;
 import com.penguin.movie.review.domain.Movie;
@@ -28,6 +27,10 @@ public class MovieService {
 	
 	@Autowired //로그인정보
 	private UserService userService;
+	
+	@Autowired // 좋아요정보
+	private LikeService likeService;
+	
 	
 	
 	//영화 추가  //, MultipartFile file, Boolean checkBox
@@ -87,7 +90,7 @@ public class MovieService {
 	
 	
 	//영화(장르,제목)가져오기 기능
-	public List<MovieDetail> getMovieList() {
+	public List<MovieDetail> getMovieList(int loginUserId) {
 		
 		List<Movie> movieList = movieRepository.selectMovieList();
 		
@@ -104,7 +107,10 @@ public class MovieService {
 			//한줄평 가져오기	
 			List<OneReviewDetail> oneReviewList = reviewService.getOneReviewList(movie.getId());
 				
-				
+			//좋아요 색갈
+			boolean isLike = likeService.isLike(movie.getId(),loginUserId);
+			
+			
 			//장르랑 제목만 일단	
 			MovieDetail movieDetail = MovieDetail.builder()
 									   .id(movie.getId())
@@ -114,7 +120,8 @@ public class MovieService {
 									   .runTime(movie.getRunTime())
 									   .releaseDate(movie.getReleaseDate())
 									   .screenBox(movie.isScreenBox())
-									   .oneReviewList(oneReviewList)									   
+									   .oneReviewList(oneReviewList)
+									   .isLike(isLike)
 									   .build();
 				
 				
@@ -126,35 +133,16 @@ public class MovieService {
 	}
 	
 	
-	//한줄평 가져오기 
-//	public MovieDetail getMovieDetail(int id) {
-//		
-//		//한줄평 가져오기	
-//		List<MovieDetail> MovieDetailList = reviewService.getOneReviewList(id);
-//		
-//		//id
-//		Movie movie =  movieRepository.selectMovie(id);
-//		  
-//		MovieDetail movieDetail = MovieDetail.builder()
-//									.id(movie.getId())
-//									.imagePath(movie.getImagePath())
-//									.title(movie.getTitle())
-//									.genre(movie.getGenre())
-//									.runTime(movie.getRunTime())
-//									.releaseDate(movie.getReleaseDate())
-//									.screenBox(movie.isScreenBox())
-//									.oneReviewList(oneReviewList)
-//									.build();
-//
-//		return movieDetail;
-//	}
-//	
+
 	
 
 	public MovieDetail getMovieDetail(int id) {
 	    // 한줄평 가져오기
 	    List<OneReviewDetail> oneReviewList = reviewService.getOneReviewList(id);
 
+		
+	    
+	    
 	    // id
 	    Movie movie = movieRepository.selectMovie(id);
 
@@ -165,8 +153,10 @@ public class MovieService {
 					            .genre(movie.getGenre())
 					            .runTime(movie.getRunTime())
 					            .releaseDate(movie.getReleaseDate())
+					            .plot(movie.getPlot())
 					            .screenBox(movie.isScreenBox())
 					            .oneReviewList(oneReviewList)
+					            
 					            .build();
 
 	    return movieDetail;

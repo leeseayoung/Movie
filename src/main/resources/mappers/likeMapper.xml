@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.penguin.movie.like.repository.LikeRepository">
+  
+  	<insert id="insertLike" parameterType="map">
+  		INSERT INTO
+  				`like`
+  			(
+  				`userId`
+  				, `movieId`
+  			)	
+  			VALUE
+  			(
+  				#{userId}
+  				, #{movieId}
+  			)
+  	
+  	</insert>
+  
+  	<select id="selectCountLikeByUserId" parameterType="map" resultType="int">
+	 	SELECT 
+	 		count(1)
+	 	FROM
+	 	 	`like`
+	 	WHERE	
+	 		`movieId` = #{movieIds}	
+	 		AND `userId` = #{userId}	
+ 
+ 
+ 	</select>
+  
+  
+  
+  
+  </mapper>

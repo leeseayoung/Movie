@@ -8,6 +8,7 @@
     <title>영화 상세 정보</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/detailPage.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
     <div class="container">
@@ -68,20 +69,15 @@
                     
                     
                     
-                    <div class="action-item pr-3 pt-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
-                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
-                        </svg>
+                    <div class="action-item pr-3">
+                        <i class="bi bi-folder-plus" style="font-size: 40px;"></i>
                         <label>찜 하기!</label>
                     </div>
                     
                     
                     
-                    <div class="action-item pr-2 pt-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                        </svg>
+                    <div class="action-item pr-2 ">
+                        <i class="bi bi-pencil-square" style="font-size: 40px;"></i>
                         <label>감상평!</label>
                     </div>
                     
@@ -124,24 +120,38 @@
                 </div>
                  <!-- 영화 감상평, 한줄평, 찜  끝-->
 
-                <div>
-                    <h1 class="pt-3">한줄평</h1>
-
-                    <!-- 한줄평 시작!-->
-                   <div class="row">
-                        <div class="commentp pl-2">
-                            <div class="user-nickname">유저 닉네임 : ${movieDetail.id}</div>
-                            <div class="comment-text">한줄평 : </div>  
-                            
-                            <svg xmlns="http://www.w3.org/2000/svg" class="heart pt-2" width="35" height="35" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.920 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.060.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                            </svg>
-                        </div>
-
-                     
-                    </div>
-                    <!-- 한줄평 시작 끝!-->
-                </div>
+               <div>
+				    <h1 class="pt-3">한줄평</h1>
+				
+				    <!-- 한줄평 시작!-->
+				    <div class="row">
+				        <!-- 반복문 한줄평 시작 -->
+				        <c:forEach items="${movieDetail.oneReviewList}" var="oneReview">
+				            <c:if test="${oneReview.movieId == movieDetail.id}">
+				                <div class="commentp pl-2">
+				                    <div class="user-nickname">유저 닉네임 : ${oneReview.loginId}</div>
+				                    <div class="comment-text">한줄평 : ${oneReview.review}</div>  
+				                   
+									<!-- 좋아요 시작 -->
+								<c:choose>
+							 		<c:when test="${movieDetail.like}">
+							 			<i class="bi bi-heart-fill text-danger unlike-icon" style="font-size: 30px; data-post-id="${movieDetail.id}"></i>
+							 		</c:when>
+							 		<c:otherwise>
+										
+					                    <i class="bi bi-heart like-Icon" style="font-size: 30px;" data-movie-id="${movieDetail.id}"></i>
+							 		
+							 		</c:otherwise>
+							 	</c:choose> 
+				                    <!-- 좋아요 끝 -->
+				                    좋아요 11개
+				                </div>
+				            </c:if>
+				        </c:forEach>
+				        <!-- 한줄평 시작 끝!-->
+				    </div>
+				</div>
+               
             
             	<div class="d-flex justify-content-end">
 	            	<c:if test="${not empty managerCode}">
@@ -172,7 +182,29 @@
 	<script>
 	$(document).ready(function() {
 		
-		
+		//좋아요 기능
+		$(".like-Icon").on("click", function() {
+			
+			let movieId= $(this).data("movie-id");
+			
+			$.ajax({
+				type:"post"
+				, url: "/movie/like"
+				, data:{"movieId":movieId}
+				, success:function(data) {
+					
+					if(data.result == "success"){
+						location.reload();
+					} else {
+						alert("좋아요 실패");
+					}
+					
+				}
+				, erroe:function() {
+					alert("좋아요 에러!");
+				}
+			});
+		});	
 		
 			
 			//모달
