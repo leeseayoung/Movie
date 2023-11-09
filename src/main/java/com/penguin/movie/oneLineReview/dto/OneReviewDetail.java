@@ -13,4 +13,8 @@ public class OneReviewDetail {
 	private String review;
 	private String loginId;
 	
+	//좋아요
+	private boolean isLike;
+	private int likeCount;
+	
 }

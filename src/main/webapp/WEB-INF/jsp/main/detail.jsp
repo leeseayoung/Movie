@@ -133,18 +133,16 @@
 				                    <div class="comment-text">한줄평 : ${oneReview.review}</div>  
 				                   
 									<!-- 좋아요 시작 -->
-								<c:choose>
-							 		<c:when test="${movieDetail.like}">
-							 			<i class="bi bi-heart-fill text-danger unlike-icon" style="font-size: 30px; data-post-id="${movieDetail.id}"></i>
-							 		</c:when>
-							 		<c:otherwise>
-										
-					                    <i class="bi bi-heart like-Icon" style="font-size: 30px;" data-movie-id="${movieDetail.id}"></i>
-							 		
-							 		</c:otherwise>
-							 	</c:choose> 
+									<c:choose>
+								 		<c:when test="${movieDetail.like}">
+								 			<i class="bi bi-heart-fill text-danger unlike-icon" style="font-size: 30px; data-post-id="${movieDetail.id}"></i>
+								 		</c:when>
+								 		<c:otherwise>
+						                    <i class="bi bi-heart like-Icon" style="font-size: 30px;" data-movie-id="${movieDetail.id}"></i>
+								 		</c:otherwise>
+								 	</c:choose> 
 				                    <!-- 좋아요 끝 -->
-				                    좋아요 ${movieDetail.likeCount}개
+				                    좋아요 ${oneReview.likeCount}개
 				                </div>
 				            </c:if>
 				        </c:forEach>

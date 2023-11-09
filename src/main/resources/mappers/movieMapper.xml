@@ -73,6 +73,7 @@
 			        `movie`
 			    WHERE
 			        `id` = #{id}
+			        
 	</select>
   
   	

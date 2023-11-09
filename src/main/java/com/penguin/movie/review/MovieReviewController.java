@@ -91,10 +91,10 @@ public class MovieReviewController {
 	@GetMapping("/detail-view")
 	public String movieDetail(
 			@RequestParam("id")int id
-//			, @RequestParam("movieId")int movieId
+//			, @RequestParam("userId")int userId
 			, Model model) {
 		
-		//영화 정보 이름
+		//영화 정보 이름,userId
 		MovieDetail movieDetail = movieService.getMovieDetail(id);
 		
 		//영화 한줄

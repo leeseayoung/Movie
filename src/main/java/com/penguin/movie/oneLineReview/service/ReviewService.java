@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.penguin.movie.like.service.LikeService;
 import com.penguin.movie.oneLineReview.domain.Review;
 import com.penguin.movie.oneLineReview.dto.OneReviewDetail;
 import com.penguin.movie.oneLineReview.repository.ReviewRepository;
@@ -20,6 +21,9 @@ public class ReviewService {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private LikeService likeService;
 	
 	
 	
@@ -42,6 +46,13 @@ public class ReviewService {
 			 
 			 int userId = review.getUserId();
 			 User user = userService.getUserById(userId);
+			 //좋아요 갯수,좋아요
+			 
+			 //좋아요 갯수
+			 int likeCount = likeService.countLike(movieId);
+			 
+			 //좋아요 있다 없다
+			 boolean isLike = likeService.isLike(userId, movieId, movieId);
 			 
 			 OneReviewDetail oneReviewDetail = OneReviewDetail.builder()
 					 							.id(review.getId())
@@ -49,6 +60,8 @@ public class ReviewService {
 					 							.movieId(review.getMovieId())
 					 							.review(review.getReview())
 					 							.loginId(user.getLoginId())
+					 							.isLike(isLike)
+					 							.likeCount(likeCount)
 					 							.build();
 			 
 			 oneReviewDetailList.add(oneReviewDetail);

@@ -49,7 +49,8 @@ public interface MovieRepository {
 	
 	
 	//영화 세부 정보 조회
-	public Movie selectMovie(@Param("id")int id);
+	public Movie selectMovie(
+			@Param("id")int id);
 	
 	
 	

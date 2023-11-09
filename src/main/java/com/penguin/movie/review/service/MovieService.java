@@ -107,12 +107,7 @@ public class MovieService {
 			//한줄평 가져오기	
 			List<OneReviewDetail> oneReviewList = reviewService.getOneReviewList(movie.getId());
 				
-			//좋아요 색갈 오류?
-			boolean isLike = likeService.isLike(movie.getId(),0);
-			
-			//좋아요 갯수 조회
-			int likeCount = likeService.countLike(movie.getId());
-			
+
 			
 			
 			//장르랑 제목만 일단	
@@ -124,9 +119,7 @@ public class MovieService {
 									   .runTime(movie.getRunTime())
 									   .releaseDate(movie.getReleaseDate())
 									   .screenBox(movie.isScreenBox())
-									   .oneReviewList(oneReviewList)
-									   .isLike(isLike)
-									   .likeCount(likeCount)
+									  
 									   .build();
 				
 				
@@ -140,12 +133,21 @@ public class MovieService {
 	
 
 	
-
+	//, int userId
 	public MovieDetail getMovieDetail(int id) {
 	    // 한줄평 가져오기
 	    List<OneReviewDetail> oneReviewList = reviewService.getOneReviewList(id);
 
+	    
+		//리뷰의 아이디를 가지고와야됨(로그인 아이디)	
 		
+		
+		//좋아요 색갈 오류?
+//		boolean isLike = likeService.isLike(id, userId);
+	    
+	    
+	    //좋아요 갯수 조회
+		int likeCount = likeService.countLike(id);
 		
 	    
 	    // id
@@ -161,7 +163,9 @@ public class MovieService {
 					            .plot(movie.getPlot())
 					            .screenBox(movie.isScreenBox())
 					            .oneReviewList(oneReviewList)
-					            
+					            .likeCount(likeCount)
+					          
+					           
 					            .build();
 
 	    return movieDetail;

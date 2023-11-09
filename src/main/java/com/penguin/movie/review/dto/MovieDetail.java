@@ -20,9 +20,7 @@ public class MovieDetail {
 	private String imagePath;
 	private boolean screenBox;
 	
-
-  
-
+	//한줄평
 	private List<OneReviewDetail> oneReviewList;
 	private String loginId;
 	
