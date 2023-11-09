@@ -144,7 +144,7 @@
 							 		</c:otherwise>
 							 	</c:choose> 
 				                    <!-- 좋아요 끝 -->
-				                    좋아요 11개
+				                    좋아요 ${movieDetail.likeCount}개
 				                </div>
 				            </c:if>
 				        </c:forEach>

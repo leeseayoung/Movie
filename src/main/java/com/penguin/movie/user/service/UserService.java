@@ -17,7 +17,7 @@ public class UserService {
 	
 	
 	
-	
+	//로그인 정보
 	public User getUserById(int id) {
 		
 		User user = userRepository.findById(id).orElse(null);

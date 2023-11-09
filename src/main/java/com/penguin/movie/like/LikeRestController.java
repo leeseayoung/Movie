@@ -18,6 +18,7 @@ public class LikeRestController {
 	@Autowired
 	private LikeService likeService;
 	
+	//좋아요 추가
 	@PostMapping("/movie/like")
 	public Map<String, String> like(
 			@RequestParam("movieId")int movieId

@@ -28,6 +28,12 @@ public class LikeService {
 		 }
 	}
 	
+	//좋아요 갯수
+	public int countLike(int movieId) {
+		return likeRepository.selectCountLike(movieId);
+	}
+	
+	
 	
 	
 }

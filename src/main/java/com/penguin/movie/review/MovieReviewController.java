@@ -93,7 +93,8 @@ public class MovieReviewController {
 			@RequestParam("id")int id
 //			, @RequestParam("movieId")int movieId
 			, Model model) {
-				//영화 정보 이름
+		
+		//영화 정보 이름
 		MovieDetail movieDetail = movieService.getMovieDetail(id);
 		
 		//영화 한줄

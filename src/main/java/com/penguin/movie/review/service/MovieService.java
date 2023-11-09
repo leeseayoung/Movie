@@ -3,6 +3,7 @@ package com.penguin.movie.review.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.tomcat.jni.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -90,7 +91,7 @@ public class MovieService {
 	
 	
 	//영화(장르,제목)가져오기 기능
-	public List<MovieDetail> getMovieList(int loginUserId) {
+	public List<MovieDetail> getMovieList() {
 		
 		List<Movie> movieList = movieRepository.selectMovieList();
 		
@@ -100,15 +101,18 @@ public class MovieService {
 		for(Movie movie:movieList) {
 				
 			//리뷰의 아이디를 가지고와야됨	
-			
 //			User user = userService.getUserById(userId);
 				
 				
 			//한줄평 가져오기	
 			List<OneReviewDetail> oneReviewList = reviewService.getOneReviewList(movie.getId());
 				
-			//좋아요 색갈
-			boolean isLike = likeService.isLike(movie.getId(),loginUserId);
+			//좋아요 색갈 오류?
+			boolean isLike = likeService.isLike(movie.getId(),0);
+			
+			//좋아요 갯수 조회
+			int likeCount = likeService.countLike(movie.getId());
+			
 			
 			
 			//장르랑 제목만 일단	
@@ -122,6 +126,7 @@ public class MovieService {
 									   .screenBox(movie.isScreenBox())
 									   .oneReviewList(oneReviewList)
 									   .isLike(isLike)
+									   .likeCount(likeCount)
 									   .build();
 				
 				
@@ -141,7 +146,7 @@ public class MovieService {
 	    List<OneReviewDetail> oneReviewList = reviewService.getOneReviewList(id);
 
 		
-	    
+		
 	    
 	    // id
 	    Movie movie = movieRepository.selectMovie(id);
@@ -181,6 +186,9 @@ public class MovieService {
 		
 		return movieRepository.selectMovie(id) ;
 	}
+
+
+
 	
 	
 	

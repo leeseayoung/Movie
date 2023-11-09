@@ -11,10 +11,14 @@ public interface LikeRepository {
 			@Param("userId")int userId
 			, @Param("movieId")int movieId);
 	
-	//좋아요 유저아이디에 의한 갯수? mapper 아직안했음
+	
+	//좋아요 유저아이디에 
 	public int selectCountLikeByUserId(
 			@Param("userId")int userId
 			, @Param("movieId")int movieId);
 	
 	
+	//좋아요 갯수
+	public int selectCountLike(
+			@Param("movieId")int movieId);
 }

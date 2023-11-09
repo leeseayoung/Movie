@@ -20,18 +20,31 @@
   	
   	</insert>
   
+  
   	<select id="selectCountLikeByUserId" parameterType="map" resultType="int">
 	 	SELECT 
 	 		count(1)
 	 	FROM
 	 	 	`like`
 	 	WHERE	
-	 		`movieId` = #{movieIds}	
+	 		`movieId` = #{movieId}	
 	 		AND `userId` = #{userId}	
- 
  
  	</select>
   
+  
+  
+   <!-- 좋아요 갯수 -->
+   <select id="selectCountLike" parameterType="int" resultType="int" >
+ 	SELECT
+ 	 	count(1)
+ 	 FROM
+ 	 	`like`
+ 	WHERE	
+ 		`movieId` = #{movieId}		
+ 
+ 
+ 	</select>
   
   
   

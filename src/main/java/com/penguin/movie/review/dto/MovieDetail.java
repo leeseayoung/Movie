@@ -29,5 +29,5 @@ public class MovieDetail {
 	
 	//좋아요
 	private boolean isLike;
-	
+	private int likeCount;
 }
