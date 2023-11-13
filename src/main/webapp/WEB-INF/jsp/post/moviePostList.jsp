@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>감상평</title>
+<title>감상평 리스트</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="/static/css/mainPage.css"  type="text/css">
-
 </head>
 <body>
 		   <div id="wrap">
@@ -29,7 +30,7 @@
 		                </c:if>
 		            </div>
 		        </header>
-	            <h1 class="text-center pt-3">영화 감상평</h1>
+	            <h1 class="text-center pt-3">감상평 리스트</h1>
 	            <section class="contents d-flex">
 	                <nav class="main-menu col-2 p-0">
 	                    <ul class="nav flex-column">
@@ -43,23 +44,26 @@
 	
 	            
 	                <section class="contents d-flex justify-content-center align-items-center col-9">
-							 
-						<div class="post-layout my-5 ">
-	
-							<div class="d-flex mt-3">
-								<label class="col-2 pl-3">제목 : </label>
-								<input type="text" class="form-control col-10" id="titleInput">
-							</div>
-							<textarea class="form-control mt-3" rows="7" id="contentInput"></textarea>
-							
-							
-							
-							<div class="d-flex justify-content-between mt-3">
-								<a href="/post/list-view" class="btn btn-secondary">목록으로</a>
-								<button type="button" class="btn btn-secondary" id="saveBtn">저장</button>
-							</div>
-							
-						</div>
+				
+							<table class="table">
+								<thead>
+									<tr>
+										<th>NO</th>
+										<th>제목</th>
+										<th>날짜</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="post" items="${postList}">
+									
+										<tr>
+											<td>${post.id}</td>
+											<td>${post.title}</td>
+											<td><fmt:formatDate value="${post.createdAt}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+										</tr>
+									</c:forEach>
+								</tbody>	 
+							</table>
 					</section>
 	           
 	            </section>
@@ -80,47 +84,5 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         
         
-        <script>
-        	$(document).ready(function() {
-        		$("#saveBtn").on("click", function () {
-    				let title = $("#titleInput").val();
-    				let content = $("#contentInput").val();
-    				
-    				if(title == "") {
-    					alert("제목을 입력하세요!");
-    					return ;
-    				}
-    				
-    				if(content == "") {
-    					alert("내용을 입력하세요!");
-    					return ;
-    				}
-    				
-    				$.ajax({
-    					type:"post"
-    					, url:"/movie/post/create" 
-    					, data:{"title":title, "content":content}
-    					, success:function(data) {
-    						if(data.result == "success"){
-    							location.href = "/movie/main-view";
-    						} else {
-	    						alert("감상평 추가 실패!")
-	    					}
-    					}
-    					, erroe:function() {
-    						alert("감상평 추가 에러!!")
-    					}
-    					
-    					
-    				});
-    				
-        		});
-        		
-        	});
-        
-        </script>
-	
-	
-
 </body>
 </html>
