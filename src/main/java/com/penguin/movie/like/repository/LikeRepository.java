@@ -10,14 +10,14 @@ public interface LikeRepository {
 	public int insertLike(
 			@Param("userId")int userId
 			, @Param("movieId")int movieId
-			, @Param("reviewId")int reviewId);
+			);
 	
 	
 	//좋아요 유저아이디에 
 	public int selectCountLikeByUserId(
 			@Param("userId")int userId
 			, @Param("movieId")int movieId
-			, @Param("reviewId")int reviewId);
+			);
 	
 	
 	//좋아요 갯수

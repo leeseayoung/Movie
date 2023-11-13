@@ -52,7 +52,7 @@ public class ReviewService {
 			 int likeCount = likeService.countLike(movieId);
 			 
 			 //좋아요 있다 없다
-			 boolean isLike = likeService.isLike(userId, movieId, movieId);
+			 boolean isLike = likeService.isLike(userId,  movieId);
 			 
 			 OneReviewDetail oneReviewDetail = OneReviewDetail.builder()
 					 							.id(review.getId())

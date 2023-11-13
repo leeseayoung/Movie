@@ -22,11 +22,11 @@ public class LikeRestController {
 	@PostMapping("/movie/like")
 	public Map<String, String> like(
 			@RequestParam("movieId")int movieId
-			, @RequestParam("reviewId")int reviewId
+			
 			, HttpSession session) {
 		
 		int userId = (Integer)session.getAttribute("userId");
-		int count = likeService.addlike(userId, movieId, reviewId);
+		int count = likeService.addlike(userId, movieId);
 	
 		Map<String, String> resultMap = new HashMap<>();
 		

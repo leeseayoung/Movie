@@ -164,8 +164,6 @@ public class MovieService {
 					            .screenBox(movie.isScreenBox())
 					            .oneReviewList(oneReviewList)
 					            .likeCount(likeCount)
-					          
-					           
 					            .build();
 
 	    return movieDetail;

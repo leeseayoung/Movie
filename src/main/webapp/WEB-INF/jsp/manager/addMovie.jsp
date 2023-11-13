@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/static/css/mainPage.css"  type="text/css">
 </head>
 <body>
-		       <div id="wrap">
+		   <div id="wrap">
             <header class="d-flex">
                 <div class="logo col-3 d-flex align-items-center">
                     <h1 class="text-primary">펭귄 리뷰</h1>

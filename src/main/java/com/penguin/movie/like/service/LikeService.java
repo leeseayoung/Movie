@@ -12,14 +12,14 @@ public class LikeService {
 	private LikeRepository likeRepository;
 	
 	//좋아요 추가
-	public int addlike(int userId, int movieId, int reviewId) {
-		return likeRepository.insertLike(userId, movieId, reviewId);
+	public int addlike(int userId, int movieId) {
+		return likeRepository.insertLike(userId, movieId);
 	}
 	
 	
 	//좋아요가 있나 없나?
-	public boolean isLike(int userId, int movieId, int reviewId) {
-		int count = likeRepository.selectCountLikeByUserId(userId, movieId, reviewId);
+	public boolean isLike(int userId, int movieId) {
+		int count = likeRepository.selectCountLikeByUserId(userId, movieId);
 		 
 		 if(count == 0) {
 			 return false;

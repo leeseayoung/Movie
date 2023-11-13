@@ -15,6 +15,12 @@ header > .user {
     height:100px;
 }
 
+.header {
+	background-color:dimgray;
+	color: #fff;
+	padding: 10px;
+}
+
 .menu-item:hover {
     background-color:#eeeeee;
 }
@@ -23,14 +29,22 @@ header > .user {
     background-color: #eeeeee;
 }
 
+.contents > .input-box {
+	width: 400px;
+	
+}
+
+.contents > .post-layout {
+	width: 600px;
+}
+
+
+
 .main-contents > .video {
     margin-top:30px;
     width:300px;
 }
 
-footer {
-    height:100px;
-}
 
 .main-contents > .video{
   text-align:center;
@@ -41,5 +55,11 @@ footer {
 }
 
 
+footer {
+    height:100px;
+        width:1110px;
+    margin: 0 auto;
+    
+}
 
 

@@ -11,13 +11,13 @@
   			(
   				`userId`
   				, `movieId`
-  				, `reviewId`
+  			
   			)	
   			VALUE
   			(
   				#{userId}
   				, #{movieId}
-  				, #{reviewId}
+  			
   			)
   	
   	</insert>
@@ -31,7 +31,7 @@
 	 	WHERE	
 	 		`movieId` = #{movieId}	
 	 		AND `userId` = #{userId}
-	 		AND `reviewId` = #{reviewId}	
+	 		
  
  	</select>
   

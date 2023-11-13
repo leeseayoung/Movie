@@ -76,8 +76,8 @@
                     
                     
                     
-                    <div class="action-item pr-2 ">
-                        <i class="bi bi-pencil-square" style="font-size: 40px;"></i>
+                    <div class="action-item pr-2 "> 
+                       <a href="/movie/post/create-view"> <i class="bi bi-pencil-square" style="font-size: 40px; color: black;"></i></a>
                         <label>감상평!</label>
                     </div>
                     
