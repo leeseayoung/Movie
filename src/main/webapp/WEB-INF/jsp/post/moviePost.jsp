@@ -33,10 +33,10 @@
 	            <section class="contents d-flex">
 	                <nav class="main-menu col-2 p-0">
 	                    <ul class="nav flex-column">
-	                    <li class="nav-item menu-item"><a href="http://localhost:8080/movie/main-view" class="nav-link text-dark font-weight-bold">현재 상영중</a></li>
-	                    <li class="nav-item menu-item"><a href="http://localhost:8080/movie/favorite-view" class="nav-link text-dark font-weight-bold">미상영 영화</a></li>
+	                    <li class="nav-item menu-item"><a href="/movie/main-view" class="nav-link text-dark font-weight-bold">현재 상영중</a></li>
+	                    <li class="nav-item menu-item"><a href="/movie/favorite-view" class="nav-link text-dark font-weight-bold">미상영 영화</a></li>
 	                    <li class="nav-item menu-item"><a href="#" class="nav-link text-dark font-weight-bold">내가 찜한 영화</a></li>
-	                    <li class="nav-item menu-item"><a href="http://localhost:8080/movie/post/list-view" class="nav-link text-dark font-weight-bold">내가 쓴 감상평</a></li>
+	                    <li class="nav-item menu-item"><a href="/movie/post/list-view" class="nav-link text-dark font-weight-bold">내가 쓴 감상평</a></li>
 	
 	                    </ul>
 	                </nav>
@@ -55,7 +55,7 @@
 							
 							
 							<div class="d-flex justify-content-between mt-3">
-								<a href="/post/list-view" class="btn btn-secondary">목록으로</a>
+								<a href="/movie/post/list-view" class="btn btn-secondary">목록으로</a>
 								<button type="button" class="btn btn-secondary" id="saveBtn">저장</button>
 							</div>
 							
