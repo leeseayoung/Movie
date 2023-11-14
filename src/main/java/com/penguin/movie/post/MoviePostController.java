@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.penguin.movie.post.domain.Post;
 import com.penguin.movie.post.service.PostService;
@@ -20,7 +21,20 @@ public class MoviePostController {
 	private PostService postService;
 	
 	
+	@GetMapping("/post/detail-view")
+	public String moviePostDetail(@RequestParam("id") int id, Model model) {
+		
+		Post post = postService.getPost(id);
+		
+		model.addAttribute("post", post);
+		
+		return "post/postDetail";
+		
+	}
 	
+	
+	
+	//리스트 페이지
 	@GetMapping("/post/list-view")
 	public String moviePostList(Model model
 			,HttpSession session) {
@@ -46,6 +60,8 @@ public class MoviePostController {
 		
 		return "post/moviePost";
 	}
+	
+	
 	
 	
 	

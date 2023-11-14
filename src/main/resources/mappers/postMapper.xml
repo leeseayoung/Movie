@@ -41,5 +41,41 @@
   	
   		</select>
   
+	      <select id="selectPost" parameterType="int"
+		  resultType="com.penguin.movie.post.domain.Post">
+		  		  SELECT
+	 			 	`id`
+	 			 	, `userId`
+					, `title`
+					, `content`
+					, `createdAt`
+					, `updatedAt`
+				FROM	 
+	  				`post`
+	  			WHERE
+	  					`id` = #{id}
+	
+		  </select>
+  
+    	<delete id="deletePost" parameterType="int">
+	  		DELETE FROM
+	  			`post`
+	  		WHERE
+	  			`id` = #{postId}	
+	  	
+  		</delete>
+  
+  
+    	<update id="updatePost" parameterType="map"> 
+	  		UPDATE 
+	  			`post`
+	  		SET
+	  			`title` = #{title}
+	  			, `content` = #{content}
+	  			, `updatedAt` = now()
+	  		WHERE
+	  			`id` = #{postId}		
+  		</update>
+  
   
   </mapper>
