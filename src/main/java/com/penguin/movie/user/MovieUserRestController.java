@@ -89,7 +89,7 @@ public class MovieUserRestController {
 			session.setAttribute("userId", user.getId());
 			session.setAttribute("userName",user.getName());
 			session.setAttribute("managerCode", user.getManagerCode());
-			//session.setAttribute("userlogin",user.getLoginId());
+			//session.setAttribute("userLogin",user.getLoginId());
 			
 			resultMap.put("result", "success");
 			
